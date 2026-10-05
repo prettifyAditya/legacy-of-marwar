@@ -1,0 +1,238 @@
+@import '../_var'
+
+.banner
+    &.home-hero-banner
+        .bg
+            video
+                filter: grayscale(1)
+            .heading
+                h1
+                    text-transform: uppercase
+                .btn 
+                    flex-direction: row-reverse
+
+.exclusive_sec
+    background: var(--lightprime)
+    .main_wrapper
+        align-items: center
+        --gap: 65px
+        gap: var(--gap)
+        .heading
+            flex: 0 1 auto
+            max-width: 310px
+            width: 100%
+            .swiper-dots
+                margin-top: 40px
+                display: flex
+                align-items: center
+                gap: 10px
+                .swiper-pagination-bullet
+                    --swiper-pagination-bullet-size: 8px
+                    position: relative
+                    background: #AEAEAE
+                    opacity: 1
+                    transition: .6s ease
+                    &::before
+                        content: ""
+                        position: absolute
+                        top: 50%
+                        left: 50%
+                        transform: translate(-50%, -50%)
+                        width: 26px
+                        height: 26px
+                        border: 1px solid var(--secondary)
+                        border-radius: 50%
+                        opacity: 0
+                        transition: .5s ease
+                .swiper-pagination-bullet-active
+                    background: var(--secondary)
+                    &::before
+                        opacity: 1
+        .exclusive_slider
+            flex: 1
+            max-width: calc( 100% - calc( 310px + var(--gap) ) )
+            width: 100%
+            padding: 20px
+            .swiper-slide
+                transition: 1s ease
+                &:not(.swiper-slide-active)
+                    .exclusive_col
+                        transform: scale(.9)
+                &.swiper-slide-active
+                    margin-right: 40px
+                    .exclusive_col
+                        transform: scale(1.1)
+                        box-shadow: 0 10px 10px -5px #0000000A
+                        figcaption
+                            .btn 
+                                transform: translateY(0)
+            .exclusive_col
+                display: block
+                overflow: hidden
+                padding: 40px
+                background: $white
+                border-radius: 15px
+                width: 100%
+                height: 100%
+                transition: 1s ease
+                figure
+                    height: 190px 
+                    margin-bottom: 20px
+                    img
+                        object-fit: contain
+                figcaption
+                    text-align: center
+                    h6
+                        line-height: 1.1
+                        font-size: 18px
+                    .btn
+                        margin: 30px auto 0
+                        transform: translateY(120px)
+                        transition: 1s ease
+
+
+.product_listing_slider 
+    background: var(--lightprime)
+    .upper_sec
+        display: flex
+        align-items: center
+        justify-content: space-between
+        gap: 50px
+        margin-bottom: 40px
+        .tab-nav
+            display: flex
+            align-items: center
+            gap: 35px
+            li
+                position: relative
+                transition: .5s ease
+                cursor: pointer
+                font-weight: 500
+                font-size: 14px
+                text-transform: uppercase
+                color: #00000080
+                &.active
+                    color: $black
+    .main_wrapper
+        display: flex
+        gap: 12px
+        .display_media
+            flex: 0 1 25%
+            max-width: 25%
+            width: 100%
+            max-height: 390px
+            video
+                border-radius: 15px
+        .slider_section
+            position: relative
+            flex: 1
+            max-width: 75%
+            width: 100%
+            .swiper-nav
+                width: 104%
+                max-width: 104%
+    .btn_wrap
+        margin-top: 50px
+        justify-content: center
+
+.product_listing_slider.special_listing
+    background: #EFEAD6
+    .upper_sec 
+        .tab-nav
+            li
+                font-weight: 500
+                color: $black
+                padding-bottom: 10px
+                text-transform: capitalize
+                &::before
+                    content: ""
+                    position: absolute
+                    left: 0
+                    bottom: 0
+                    width: 0
+                    height: 2px
+                    background: $secondary
+                    transition: .5s ease
+                &.active
+                    color: $secondary
+                    &::before
+                        width: 100%
+                    
+.corporate-gifting.banner
+    .banner-wrapper
+        top: 40%
+        translate: 0 -40%
+        .icon
+            width: 50px
+            margin-bottom: 100px
+        .heading
+            max-width: 360px
+            p
+                margin-bottom: 30px
+
+.social_media
+    .upper_sec
+        position: relative
+        margin-bottom: 50px
+        .heading
+            text-align: center
+            .icon
+                width: 50px
+                margin: 0 auto 10px
+            p
+                margin: 0
+        .swiper-nav
+            position: absolute
+            right: 0
+            top: 50%
+            transform: translate(-50%, 0)
+            gap: 15px
+    .main_wrapper
+        .media_slider
+            figure
+                height: 450px
+                border-radius: 10px
+                video, img
+                    border-radius: inherit
+        .btn_wrap
+            margin-top: 50px 
+            justify-content: center
+            .social_btn
+                display: flex
+                align-items: center
+                justify-content: center
+                gap: 10px
+                color: $secondary
+                border-bottom: 1px solid $secondary
+                padding: 10px
+                position: relative
+                overflow: hidden
+                &:hover
+                    color: $white
+                    p
+                        color: $white
+                    &::before
+                        bottom: 0
+                &::before
+                    content: ""
+                    position: absolute
+                    width: 100%
+                    height: 100%
+                    left: 0
+                    right: 0
+                    bottom: -100%
+                    z-index: -1
+                    background: $secondary
+                    transition: .5s ease
+                .icon
+                    flex: 0 1 auto
+                    width: 24px
+                    height: 24px
+                    line-height: 1
+                p
+                    line-height: 1
+                    color: $secondary
+                    font-size: 14px
+                    text-transform: uppercase
+                    font-weight: 500
+                    transition: .5s ease
