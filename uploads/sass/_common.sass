@@ -464,16 +464,30 @@ img, video
     &.btn-medium
         --height: 45px
         --padding: 25px
-    &.white
+    &.white-border
         color: $white
         border: 1px solid $white
         &::before
             background: $white
         &:hover
-            color: $primary
-            border-color: $primary
+            color: $secondary
+            border-color: $secondary
             path
-                fill: $primary
+                fill: $secondary
+    &.white
+        color: $black
+        border: 1px solid $white
+        &::before
+            bottom: 0
+            border-radius: 0
+            background: $white
+        &:hover
+            color: $white
+            &::before
+                bottom: -100%
+                border-radius: 50%
+            path
+                fill: $secondary
     &.black
         color: $black
         border: 1px solid $black
@@ -641,8 +655,11 @@ img, video
         translate: 0 -50%
         z-index: 2
         h1
-            font-size: 48px
+            font-family: $antiga
+            font-size: 60px
             line-height: 1.2
+            letter-spacing: 5%
+            text-transform: uppercase
             color: $white
             @include media(1280)
                 font-size: 44px
@@ -1280,3 +1297,27 @@ em
             max-width: 96%
             @include media(768)
                 max-width: 100%
+
+div
+    &:has(>.product-not-found)
+        position: relative
+
+.product-not-found
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    width: 100%
+    z-index: 1
+    &.not-found2
+        position: relative
+    .nt-fnd-wrp
+        text-align: center
+        .ico
+            width: 120px
+            margin-left: auto
+            margin-right: auto
+            filter: grayscale(1)
+        p
+            font-size: 24px
+            margin: 10px 0 3rem 

@@ -7,12 +7,93 @@
                 filter: grayscale(1)
             .heading
                 h1
-                    text-transform: uppercase
+                    font-size: 80px
                 .btn 
                     flex-direction: row-reverse
 
+.discover_category
+    width: 100%
+    height: calc( 100vh - var(--headerfixed) )
+    background: $black
+    z-index: 1
+    @include before(url("/images/home/category_bg.jpg"))
+    &::before
+        background-repeat: no-repeat
+        mix-blend-mode: luminosity
+        opacity: 0.4
+        z-index: -1
+    .heading
+        text-align: center
+        margin-bottom: 50px
+        h2
+            color: $white
+    .main_wrapper
+        width: 100%
+        height: 100%
+        display: flex
+        align-items: center
+        justify-content: space-between
+        .category_wrapper
+            flex: 1
+            width: 100%
+            max-width: 100%
+            overflow: hidden
+            .category_col
+                position: absolute
+                top: 0
+                left: 0
+                right: 0
+                width: 100%
+                height: 100%
+                max-width: 500px
+                margin: 0 auto
+                transform: translateY(120%)
+                opacity: 0
+                transition: .5s ease
+                &.active
+                    opacity: 1
+                    transform: translateY(25%)
+                &.exit
+                    opacity: 0
+                    transform: translate(-150%, 25%)
+        .category_nav
+            flex: 0 1 auto
+            li
+                cursor: pointer
+                padding-right: 90px
+                position: relative
+                color: #FFFFFF66
+                transition: .5s ease
+                @include media(1440)
+                    padding-right: 70px
+                &::before
+                    content: ""
+                    position: absolute
+                    right: 0
+                    left: auto
+                    top: 50%
+                    transform: translateY(-50%)
+                    height: 1px
+                    width: 0
+                    background: $secondary
+                    transition: width .5s ease
+                &:not(:last-child)
+                    margin-bottom: 15px
+                &.active
+                    color: $secondary 
+                    &::before
+                        width: 35%
+
+
 .exclusive_sec
     background: var(--lightprime)
+    z-index: 1
+    @include before(url("/images/home/flower.png"))
+    &::before
+        background-repeat: no-repeat
+        background-position: 0 50%
+        opacity: .5
+        z-index: -1
     .main_wrapper
         align-items: center
         --gap: 65px
@@ -93,6 +174,14 @@
 
 .product_listing_slider 
     background: var(--lightprime)
+    &.discover_collection
+        z-index: 1
+        @include before(url("/images/home/discover-bg.png"))
+        &::before
+            opacity: 0.5
+            background-repeat: no-repeat
+            background-size: cover
+            z-index: -1
     .upper_sec
         display: flex
         align-items: center
@@ -137,6 +226,15 @@
 
 .product_listing_slider.special_listing
     background: #EFEAD6
+    z-index: 1
+    @include before(url("/images/home/spiral.png"))
+    &::before
+        width: 100%
+        height: 100%
+        background-repeat: no-repeat
+        background-size: cover
+        mix-blend-mode: multiply
+        z-index: -1
     .upper_sec 
         .tab-nav
             li
@@ -185,7 +283,7 @@
             position: absolute
             right: 0
             top: 50%
-            transform: translate(-50%, 0)
+            transform: translate(0%, -50%)
             gap: 15px
     .main_wrapper
         .media_slider

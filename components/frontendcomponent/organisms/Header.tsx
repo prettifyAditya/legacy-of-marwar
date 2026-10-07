@@ -1,10 +1,12 @@
 "use client";
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useModal } from "@/hooks/useModal";
 import "@/uploads/sass/header/header.css";
 
 export default function Header() {
+  const { openModal } = useModal();
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   useEffect(() => {
     const handleScroll = (): void => {
@@ -18,7 +20,7 @@ export default function Header() {
   }, []);
   return (
     <header className={`${isScrolled ? "header-fixed" : ""}`}>
-      <div className="container">
+      <div className="container-fluid">
         <div className="header-container">
           <div className="colA">
             <button type="button" className="ham-btn">
@@ -42,7 +44,11 @@ export default function Header() {
           <div className="colC">
             <ul className="nav-items">
               <li>
-                <button type="button" className="search">
+                <button
+                  type="button"
+                  className="search"
+                  onClick={() => openModal("searchPop")}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width={24}
@@ -59,7 +65,7 @@ export default function Header() {
                   </svg>
                 </button>
               </li>
-              <li>
+              <li className="myAccount">
                 <button type="button" className="user">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -79,6 +85,22 @@ export default function Header() {
                     </g>
                   </svg>
                 </button>
+                <div className="dropdown-menu">
+                  <ul>
+                    <li>
+                      <Link href="/my-account">My Account</Link>
+                    </li>
+                    <li>
+                      <Link href="/my-order">My Order</Link>
+                    </li>
+                    <li>
+                      <Link href="/my-wishlist">My Wishlist</Link>
+                    </li>
+                    <li>
+                      <button type="button">Log Out</button>
+                    </li>
+                  </ul>
+                </div>
               </li>
               <li>
                 <button type="button" className="wishlist">
@@ -94,6 +116,7 @@ export default function Header() {
                     ></path>
                   </svg>
                 </button>
+                <span className="dot-noti">3</span>
               </li>
               <li>
                 <button type="button" className="cart">
@@ -113,6 +136,7 @@ export default function Header() {
                     ></path>
                   </svg>
                 </button>
+                <span className="dot-noti">7</span>
               </li>
             </ul>
           </div>

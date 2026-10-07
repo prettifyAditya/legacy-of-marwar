@@ -1,19 +1,84 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import type { SyntheticEvent, SubmitEvent } from "react";
 import Overlay from "./Overlay";
+import Input from "../atoms/Input";
+import Button from "../atoms/Button";
+import SearchPop from "./SearchPop";
 
-interface FooterNavItem {
-  label: string;
-  href: string;
-  isButton?: boolean;
+interface InfoItem {
+  icon: string;
+  title: string;
+  desc: string;
 }
 
-const footerNavItems: FooterNavItem[] = [
-  { label: "About SJ Group", href: "/about-us" },
-  { label: "Services", href: "/service-listing" },
-  { label: "Projects", href: "/project-listing" },
-  { label: "Blogs", href: "/blog-listing" },
-  { label: "Contact us", href: "/contact-us", isButton: true },
+const infoStripData: InfoItem[] = [
+  {
+    icon: "/icon/info1.svg",
+    title: "BULK ORDER",
+    desc: "Get a good discount on bulk orders.",
+  },
+  {
+    icon: "/icon/info2.svg",
+    title: "PAN INDIA DELIVERY",
+    desc: "Uniforms Delivered to Your Doorstep.",
+  },
+  {
+    icon: "/icon/info3.svg",
+    title: "7 DAYS EXCHANGE*",
+    desc: "Simply exchange it within 7 days.",
+  },
+  {
+    icon: "/icon/info4.svg",
+    title: "Secure Payment",
+    desc: "Pay Securely, Shop Confidently.",
+  },
+];
+
+interface FooterNav {
+  heading: string;
+  navItems: FooterNavItem[];
+}
+
+interface FooterNavItem {
+  title: string;
+  linkHref: string;
+}
+
+const footerNavItems: FooterNav[] = [
+  {
+    heading: "Products",
+    navItems: [
+      { title: "Rings", linkHref: "/product-listing/rings" },
+      { title: "Earrings", linkHref: "/product-listing/earrings" },
+      { title: "Bracelets", linkHref: "/product-listing/bracelets" },
+      { title: "Necklaces", linkHref: "/product-listing/necklaces" },
+      { title: "Silver Coins", linkHref: "/product-listing/silver-coins" },
+      { title: "Festive Offers", linkHref: "/product-listing/festive-offers" },
+    ],
+  },
+  {
+    heading: "Company",
+    navItems: [
+      { title: "About us", linkHref: "/about-us" },
+      { title: "Contact us", linkHref: "/contact-us" },
+      { title: "FAQ's", linkHref: "/faqs" },
+      { title: "Careers", linkHref: "/careers" },
+      { title: "Blogs", linkHref: "/blogs" },
+    ],
+  },
+  {
+    heading: "Legal",
+    navItems: [
+      { title: "Privacy Policy", linkHref: "/privacy-policy" },
+      { title: "Terms and Conditions", linkHref: "/terms-and-conditions" },
+      { title: "Shipping & Delivery", linkHref: "/shipping-and-delivery" },
+      { title: "Returns & Exchanges", linkHref: "/returns-and-exchanges" },
+      { title: "Size Guide", linkHref: "/size-guide" },
+    ],
+  },
 ];
 
 interface SocialLink {
@@ -50,107 +115,202 @@ const socialLinks: SocialLink[] = [
   },
 ];
 
+interface EmailData {
+  email: string;
+}
+
 export default function Footer() {
+  const [formData, setFormData] = useState<EmailData>({
+    email: "",
+  });
+  const handleChange = (
+    e: SyntheticEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = e.currentTarget;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+  const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(formData);
+  };
   return (
     <>
+      <figure className="footer-vector">
+        <img src="/images/home/footer-vector.svg" alt="footer_vector"></img>
+      </figure>
       <footer>
-        <div className="container">
-          <div className="upper-footer">
-            <div className="main_wrapper flex">
-              <div className="colA">
-                <Link href="/" className="logo">
-                  <Image
-                    src="/images/logo.svg"
-                    className="svg"
-                    width={101}
-                    height={118}
-                    alt="logo"
-                  />
-                </Link>
-              </div>
-
-              <div className="colB">
-                <ul className="nav">
-                  {footerNavItems.map((item) => (
-                    <li key={item.label}>
-                      <Link
-                        href={item.href}
-                        className={item.isButton ? "btn white" : undefined}
-                      >
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-
-                <ul className="contact_group">
-                  <li>
-                    <div className="icon">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="30"
-                        height="30"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          fill="none"
-                          stroke="#fff"
-                          strokeLinejoin="round"
-                          strokeWidth="1.5"
-                          d="M7.829 16.171a20.9 20.9 0 0 1-4.846-7.614c-.573-1.564-.048-3.282 1.13-4.46l.729-.728a2.11 2.11 0 0 1 2.987 0l1.707 1.707a2.11 2.11 0 0 1 0 2.987l-.42.42a1.81 1.81 0 0 0 0 2.56l3.84 3.841a1.81 1.81 0 0 0 2.56 0l.421-.42a2.11 2.11 0 0 1 2.987 0l1.707 1.707a2.11 2.11 0 0 1 0 2.987l-.728.728c-1.178 1.179-2.896 1.704-4.46 1.131a20.9 20.9 0 0 1-7.614-4.846Z"
-                        />
-                      </svg>
-                    </div>
-                    <Link href="tel:+91-0000 000 000">+91-0000 000 000</Link>
-                  </li>
-                  <li>
-                    <Link href="mailto:info@sjgroup.com">info@sjgroup.com</Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className="lower-footer">
-            <div className="copywite">
-              <p>© SJ Group. All rights reserved.</p>
-              <p className="pret">
-                Made by passion
-                <Link
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://www.prettifycreative.com/"
-                >
-                  <img
-                    src="/icon/prettify-light.svg"
-                    width={43}
-                    height={16}
-                    alt="prettify_logo"
-                  />
-                </Link>
-              </p>
-            </div>
-
-            <ul className="social_icons">
-              {socialLinks.map((social) => (
-                <li key={social.name}>
-                  <Link href={social.href} aria-label={social.name}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width={20}
-                      height={20}
-                      viewBox={social.viewBox}
-                    >
-                      <path fill="currentColor" d={social.path} />
-                    </svg>
-                  </Link>
+        <Image
+          src="/images/home/footer-bg.jpg"
+          width={1280}
+          height={440}
+          alt="footer_bg"
+          className="footer-bg"
+        ></Image>
+        <div className="info_strip">
+          <div className="container">
+            <ul>
+              {infoStripData.map((item) => (
+                <li key={item.title}>
+                  <div className="icon">
+                    <img src={item.icon} alt="" />
+                  </div>
+                  <div className="info">
+                    <h6>{item.title}</h6>
+                    <p>{item.desc}</p>
+                  </div>
                 </li>
               ))}
             </ul>
           </div>
         </div>
+        <div className="upper-footer">
+          <div className="main_wrapper flex container">
+            <div className="colA">
+              <Link href="/" className="logo">
+                <Image
+                  src="/images/logo-light.svg"
+                  className="svg"
+                  width={151}
+                  height={110}
+                  alt="logo"
+                />
+              </Link>
+              <div className="form">
+                <Input
+                  type="text"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Enter your email  address"
+                  name="email"
+                  id="email"
+                />
+                <button type="button" className="submitBtn">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={15}
+                    height={15}
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      d="m7 2l10 10L7 22"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+              <div className="desc">
+                <p>
+                  *By proceeding, you agree to the Legacy of Marwar{" "}
+                  <Link href="/terms-and-conditions">Terms & Conditions</Link>,
+                  have read and understood the Legacy of Marwar{" "}
+                  <Link href="/privacy-policy">Privacy Policy</Link>, and
+                  consent to receiving brand marketing messages.
+                </p>
+              </div>
+              <div className="contact_wrap">
+                <ul className="social_icons">
+                  {socialLinks.map((social) => (
+                    <li key={social.name}>
+                      <Link href={social.href} aria-label={social.name}>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width={20}
+                          height={20}
+                          viewBox={social.viewBox}
+                        >
+                          <path fill="currentColor" d={social.path} />
+                        </svg>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <Link href="tel:+910000000000" className="mob_no">
+                  +91 - 000 000 0000
+                </Link>
+              </div>
+            </div>
+            <div className="colB">
+              <div className="nav-wrapper">
+                {footerNavItems.map((item) => (
+                  <div className="list" key={item.heading}>
+                    <h6>{item.heading}</h6>
+                    <ul>
+                      {item.navItems.map((item) => (
+                        <li key={item.title}>
+                          <Link href={item.linkHref}>{item.title}</Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+              <div className="btn_wrap">
+                <Button
+                  classname="white-border"
+                  buttonText="Whatsapp"
+                  svgpath={
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width={18}
+                      height={18}
+                      viewBox="0 0 24 24"
+                    >
+                      <g fill="none">
+                        <g clipPath="url(#SVGXv8lpc2Y)">
+                          <path
+                            fill="currentColor"
+                            fillRule="evenodd"
+                            d="M17.415 14.382c-.298-.149-1.759-.867-2.031-.967s-.47-.148-.669.15c-.198.297-.767.966-.94 1.164c-.174.199-.347.223-.644.075c-.297-.15-1.255-.463-2.39-1.475c-.883-.788-1.48-1.761-1.653-2.059c-.173-.297-.019-.458.13-.606c.134-.133.297-.347.446-.52s.198-.298.297-.497c.1-.198.05-.371-.025-.52c-.074-.149-.668-1.612-.916-2.207c-.241-.579-.486-.5-.668-.51c-.174-.008-.372-.01-.57-.01s-.52.074-.792.372c-.273.297-1.04 1.016-1.04 2.479c0 1.462 1.064 2.875 1.213 3.074s2.095 3.2 5.076 4.487c.71.306 1.263.489 1.694.625c.712.227 1.36.195 1.872.118c.57-.085 1.758-.719 2.006-1.413s.247-1.289.173-1.413s-.272-.198-.57-.347m-5.422 7.403h-.004a9.87 9.87 0 0 1-5.032-1.378l-.36-.214l-3.742.982l.999-3.648l-.235-.374a9.86 9.86 0 0 1-1.511-5.26c.002-5.45 4.436-9.884 9.889-9.884a9.8 9.8 0 0 1 6.988 2.899a9.82 9.82 0 0 1 2.892 6.992c-.002 5.45-4.436 9.885-9.884 9.885m8.412-18.297A11.82 11.82 0 0 0 11.992 0C5.438 0 .102 5.335.1 11.892a11.86 11.86 0 0 0 1.587 5.945L0 24l6.304-1.654a11.9 11.9 0 0 0 5.684 1.448h.005c6.554 0 11.89-5.335 11.892-11.893a11.82 11.82 0 0 0-3.48-8.413"
+                            clipRule="evenodd"
+                          ></path>
+                        </g>
+                        <defs>
+                          <clipPath id="SVGXv8lpc2Y">
+                            <path fill="#fff" d="M0 0h24v24H0z"></path>
+                          </clipPath>
+                        </defs>
+                      </g>
+                    </svg>
+                  }
+                ></Button>
+                <Button classname="white" buttonText="Bulk Order"></Button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="lower-footer container">
+          <div className="copywite">
+            <p>© Legacy of Marwar . All Right Reserved</p>
+            <p className="pret">
+              Made by
+              <Link
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.prettifycreative.com/"
+              >
+                <img
+                  src="/icon/prettify-light.svg"
+                  width={43}
+                  height={16}
+                  alt="prettify_logo"
+                />
+              </Link>
+            </p>
+          </div>
+          <figure className="payment">
+            <Image
+              src="/images/home/payment.png"
+              width={350}
+              height={45}
+              alt="payments"
+            ></Image>
+          </figure>
+        </div>
       </footer>
       <Overlay />
+      <SearchPop />
     </>
   );
 }

@@ -4,6 +4,13 @@ import localFont from "next/font/local";
 import MainTemplate from "@/components/frontendcomponent/templates/MainTemplate";
 import { ReduxProvider } from "@/store/provider";
 
+const antiga = localFont({
+  src: "../../public/font/Antiga-Regular.woff",
+  weight: "400",
+  style: "normal",
+  variable: "--antiga",
+});
+
 const louizeTrial = localFont({
   src: "../../public/font/Louizetrial.woff",
   weight: "400",
@@ -40,7 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${louizeTrial.variable} ${sweetSans.variable}`}
+        className={`${louizeTrial.variable} ${sweetSans.variable} ${antiga.variable}`}
         cz-shortcut-listen="true"
       >
         <ReduxProvider>

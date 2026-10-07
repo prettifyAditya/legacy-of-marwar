@@ -4,8 +4,10 @@ import "@/uploads/sass/home/home.css";
 import Exclusive from "./Exclusive";
 import CorporateGifting from "./CorporateGifting";
 import FollowSocialMedia from "./FollowSocialMedia";
+import DiscoverCategory from "./DiscoverCategory";
 
 const discoverCollectionData = {
+  classname: "discover_collection",
   heading: "Discover The Collection",
   mediaSrc: "/images/home/collection.mp4",
   linkHref: "/product-listing",
@@ -225,6 +227,7 @@ export default function HomePage() {
         linkHref="/product-listing"
       />
       <ProductListingSlider data={discoverCollectionData} />
+      <DiscoverCategory />
       <Exclusive />
       <CorporateGifting />
       <ProductListingSlider data={specialOccasionsData} />
