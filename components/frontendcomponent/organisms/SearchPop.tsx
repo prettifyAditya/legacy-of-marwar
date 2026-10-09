@@ -11,25 +11,25 @@ const productItem: ProductItem[] = [
     linkHref: "/product-listing/1",
     imgSrc: "/images/other/ring1.png",
     title: "Women flexible bangle bracelet",
-    price: "INR 15000",
+    sp: "INR 15000",
   },
   {
     linkHref: "/product-listing/2",
     imgSrc: "/images/other/ring1.png",
     title: "Women flexible bangle bracelet",
-    price: "INR 15000",
+    sp: "INR 15000",
   },
   {
     linkHref: "/product-listing/3",
     imgSrc: "/images/other/ring1.png",
     title: "Women flexible bangle bracelet",
-    price: "INR 15000",
+    sp: "INR 15000",
   },
   {
     linkHref: "/product-listing/4",
     imgSrc: "/images/other/ring1.png",
     title: "Women flexible bangle bracelet",
-    price: "INR 15000",
+    sp: "INR 15000",
   },
 ];
 

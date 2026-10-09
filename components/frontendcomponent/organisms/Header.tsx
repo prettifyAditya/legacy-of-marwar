@@ -1,12 +1,17 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useModal } from "@/hooks/useModal";
 import "@/uploads/sass/header/header.css";
 
 export default function Header() {
   const { openModal } = useModal();
+  const pathname = usePathname();
+  const ProductDetails = pathname.startsWith("/product-details");
+  const shoppingCart = pathname.startsWith("/shopping-cart");
+  const headerFit = ProductDetails || shoppingCart;
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   useEffect(() => {
     const handleScroll = (): void => {
@@ -19,11 +24,17 @@ export default function Header() {
     };
   }, []);
   return (
-    <header className={`${isScrolled ? "header-fixed" : ""}`}>
+    <header
+      className={`${isScrolled ? "header-fixed" : ""} ${headerFit ? "header-fit" : ""}`}
+    >
       <div className="container-fluid">
         <div className="header-container">
           <div className="colA">
-            <button type="button" className="ham-btn">
+            <button
+              type="button"
+              className="ham-btn"
+              onClick={() => openModal("hamPop")}
+            >
               <span></span>
               <span></span>
               <span></span>
@@ -66,7 +77,11 @@ export default function Header() {
                 </button>
               </li>
               <li className="myAccount">
-                <button type="button" className="user">
+                <button
+                  type="button"
+                  className="user"
+                  onClick={() => openModal("loginPop")}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width={24}

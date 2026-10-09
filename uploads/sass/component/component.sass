@@ -28,6 +28,7 @@
 				margin: 25px auto 0
 
 .listing_card
+	position: relative
 	display: block
 	background: $white
 	width: 100%
@@ -35,23 +36,52 @@
 	border-radius: 15px
 	padding: 40px 25px
 	&:hover
-		figure
+		figure, .figure
 			img
 				transform: scale(1.1)
 		figcaption
-			h6
+			h6, .h6 
 				color: $secondary
-	figure
-		width: 80%
+	.wishlistBtn
+		width: 50px
+		height: 50px
+		position: absolute
+		top: 10px
+		right: 10px
+		z-index: 2
+		&.active
+			svg 
+				path
+					fill-opacity: 1
+					fill: $secondary
+		svg, img
+			width: 40%
+			height: 40%
+	figure, .figure
+		display: block
+		line-height: 0
 		margin: 0 auto 40px
 		overflow: hidden
 		@include shine
+		img
+			display: block
+			width: 80%
+			margin: 0 auto
 	figcaption
-		h6
+		h6, .h6
 			font-family: $sweetSans
 			font-size: 14px
 			color: $text
 			transition: .5s ease
-		p
-			color: $black
-			font-weight: 500
+		.price
+			display: flex
+			align-items: center
+			gap: 20px
+			margin-top: 5px
+			.sp
+				color: $black
+				font-weight: 500
+			.mrp
+				color: #000000B2
+				font-weight: 300
+				text-decoration: line-through

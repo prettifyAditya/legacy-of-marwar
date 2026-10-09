@@ -1,0 +1,163 @@
+@import '../_var'
+
+section
+    &:has(.checkout_header)
+        margin-top: var(--headerheight)
+    .checkout_header
+        padding: 15px 0
+        border-bottom: 1px solid #F1F1F1
+        ul
+            text-align: center
+            max-width: 514px
+            margin: auto
+            li
+                display: inline-block
+                vertical-align: middle
+                background: $white
+                position: relative
+                &:not(:last-child)
+                    margin-right: 5rem
+                    @include media(768)
+                        margin-right: 2rem 
+                    &::before
+                        content: ''
+                        position: absolute
+                        left: calc( 100% + 20px )
+                        bottom: 15%
+                        height: 1px
+                        width: 45px
+                        border: 1px dashed #ccc
+                        @include media(768)
+                            left: calc(100% + 8px)
+                            width: 21px    
+                a
+                    display: block
+                    text-align: center
+                    font-size: 14px
+                    text-align: center
+                    color: $text
+                    text-transform: uppercase
+                    @include media(768)
+                        font-size: 12px 
+                    .icon
+                        height: 28px
+                        width: 28px
+                        margin: 0 auto 16px
+                        border-radius: 50%
+                        display: flex
+                        align-items: center
+                        justify-content: center
+                        background: linear-gradient(#ECECEC, #ECECEC)
+                        @include media(768) 
+                            width: 20px
+                            height: 20px
+                            margin: 0 auto 10px
+                    &.active
+                        color: $secondary
+                        .icon
+                            background: linear-gradient(#BEA16F, #9A7D48)
+
+.checkout-cart
+    .container
+        --container: 1000px
+    .main_wrapper
+        display: flex
+        flex-wrap: wrap
+        align-items: start
+        gap: 30px
+        .colA
+            flex: 1
+            width: 100%
+            max-width: 100%
+            padding: 20px
+            .total
+                margin-bottom: 30px
+                p
+                    font-weight: 400
+                    font-size: 20px
+                    color: $black
+            .cart_list
+                .cart_col
+                    border: 1px solid #F1F1F1
+                    border-radius: 5px
+                    padding: 15px
+                    display: flex
+                    flex-wrap: wrap
+                    align-items: start
+                    gap: 30px
+                    figure
+                        line-height: 0
+                        flex: 0 1 120px
+                        width: 100%
+                        max-width: 120px
+                    figcaption
+                        flex: 1
+                        h6
+                            font-weight: 400
+                            font-family: $sweetSans
+                            font-size: 14px
+                            color: $text
+                            margin-bottom: 15px
+                        .options_wrap
+                            display: flex
+                            gap: 12px
+                            .color_col
+                                flex: 1
+                                background: #F1F1F1
+                                border-radius: 5px
+                                padding: 6px 10px
+                                height: 100%
+                                p
+                                    white-space: nowrap
+                                    font-size: 14px
+                                    color: $black 
+
+        .colB
+            flex: 0 1 auto
+            width: 400px
+            padding: 20px
+            border-left: 1px solid #F3F3F3
+            .coupon_section
+                h6
+                    font-family: $sweetSans
+                    font-weight: 400
+                    font-size: 16px
+                    margin-bottom: 10px
+                .coupon_wrap
+                    width: 100%
+                    display: flex
+                    flex-wrap: wrap
+                    align-items: center
+                    gap: 10px
+                    .form-group
+                        flex: 1
+                    .btn
+                        flex: 0 1 auto
+                        --height: 36px
+                        border-radius: 5px
+                        flex: 0 1 auto
+            .checkout-list-wrap
+                margin-top: 80px
+                .checkout-list
+                    li
+                        display: flex
+                        align-items: center
+                        justify-content: space-between
+                        &:not(:last-child)
+                            margin-bottom: 14px
+                        *
+                            font-size: 14px
+                            line-height: 18px
+                            color: $text
+                .total_amount
+                    border-top: 1px solid #D3D3D3
+                    display: flex
+                    align-items: center
+                    justify-content: space-between
+                    padding: 9px 0
+                    margin: 22px 0
+                    p
+                        color: $black
+                        font-weight: 500
+                .btn
+                    max-width: 100%

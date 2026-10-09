@@ -690,7 +690,7 @@ img, video
 // swiper
 
 .swiper-slide
-    height: auto
+    height: auto !important
 
 .swiper-nav
     line-height: 0
@@ -1031,8 +1031,11 @@ img, video
     --arrowsize: 14px
     --space: 11px
     .label
-        color: $text
-        font-size: 16px
+        color: $black
+        font-size: 12px
+        text-transform: uppercase
+        letter-spacing: 10%
+        font-weight: 500
         height: var(--labelheight)
         line-height: var(--labelheight)
         background-image: url(/icon/arrow-down-black.svg)
@@ -1046,6 +1049,8 @@ img, video
         user-select: none
     &.active
         --btn: 10px
+        .adi-select-menu
+            grid-template-rows: 1fr
         &.price_select
             .adi-select-menu
                 .upper-sec
@@ -1064,19 +1069,23 @@ img, video
         .adi-select-menu
             right: 0
             left: auto
-    &.color-select
-        .adi-select-menu
-            li
-                .in-bx
-                    border-color: #ccc
-                    border-radius: 50%
+    // &.color-select
+    //     .adi-select-menu
+    //         li
+    //             .in-bx
+    //                 border-color: #ccc
+    //                 border-radius: 50%
     &.price_select
         .adi-select-menu
+            width: 310px
+        .price_wrap
             padding: 20px
-            width: 325px
+            // width: 325px
             .upper-sec
                 display: flex
+                align-items: center
                 .reset-btn
+                    color: $text
                     font-size: 14px
                     @include font(500)
                     display: none
@@ -1088,6 +1097,7 @@ img, video
                         margin-left: 3px
             h6
                 flex: 1
+                font-family: $sweetSans
                 font-size: 14px
                 color: var(--black)
                 @include font(500)
@@ -1121,12 +1131,19 @@ img, video
         top: 100%
         background: $white
         width: 260px
-        padding: 20px 0
-        display: none
         max-height: 244px
         overflow-y: auto
         @include scrollbar($width: 6px,$color : $text,$radius: 10px)
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px
+        display: grid
+        grid-template-rows: 0fr
+        transition: .5s ease 
+        article
+            overflow: hidden
+            ul
+                padding: 20px 0
+            .price_wrap
+                padding: 20px
         &:has(input[type="radio"])
             li
                 .in-bx
@@ -1147,7 +1164,7 @@ img, video
             padding: 0 14px
             &:has(input:checked)
                 .in-bx
-                    background: var(--primary)
+                    background: var(--secondary)
                     transition: .4s ease
                     &::before
                         opacity: 1
@@ -1156,7 +1173,7 @@ img, video
             .in-bx
                 height: var(--boxsize)
                 width: var(--boxsize)
-                border: 1px solid $primary
+                border: 1px solid $secondary
                 border-radius: 3px
                 transition: 0s ease
                 @include before(url(/icon/tick-white.svg))
@@ -1184,7 +1201,7 @@ img, video
                 appearance: none
                 opacity: 0
 
-.breadcrumps
+.breadcrumbs
     @include media(991)
         display: none
     li
@@ -1193,11 +1210,12 @@ img, video
         a
             color: $text
             font-size: 14px
+            font-weight: 500
             @include media(520)
                 font-size: 12px
                 text-overflow: ellipsis
             &.active
-                color: $black
+                color: $secondary
         &:not(:last-child)
             position: relative
             padding-right: 20px
@@ -1321,3 +1339,12 @@ div
         p
             font-size: 24px
             margin: 10px 0 3rem 
+
+.green-color
+    color: $green !important
+.light-green
+    color: var(--green)
+.red-color
+    color: $red !important
+.orange-color
+    color: orange !important

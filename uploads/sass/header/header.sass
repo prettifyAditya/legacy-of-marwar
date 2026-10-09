@@ -139,7 +139,7 @@ header
                             height: 18px
                             width: 18px
                             border-radius: 50%
-                            background: var(--white)
+                            background: var(--primary)
                             display: flex
                             align-items: center
                             justify-content: center
@@ -414,155 +414,272 @@ footer
                     padding-bottom: 50px
 
 .model.ham-pop
-    right: 0
-    max-width: 480px
-    transform: translateX(100%)
-    background: $white
-    transition: .5s ease
+    top: 50%
+    left: 50%
+    max-width: 490px
+    height: fit-content
+    max-height: 90vh
+    border-radius: 235px 235px 0 0
+    transform: translate(-50%, 100vh)
+    transition: .8s ease
     z-index: 10
-    &::before
-        content: ""
-        position: absolute
-        left: 0
-        bottom: 0
-        width: 100%
-        height: 100%
-        background: url(/images/logo-vector.svg) no-repeat
-        background-position: 90% 95%
-        filter: brightness(0.9)
-        background-size: 50%
-        opacity: 0.2
-        @include media(540)
-            background-size: 80%
     &.is-open
-        transform: translateX(0%)
+        transform: translate(-50%, -50%)
     .close
         top: 17px
         right: 22px
-        &:hover
-            svg
-                path
-                    stroke: $primary
+        z-index: 2
         svg
             width: 20px
             path
-                stroke: $black
-                stroke-width: 2
+                stroke: $white !important
+                stroke-width: 2 !important
     .model-body
-        padding: 0px 40px 30px
-        margin-top: 60px
-        height: calc(100% - 60px)
-        overflow-y: auto
+        padding: 150px 40px 30px
+        height: 100%
         display: flex
         flex-direction: column
         position: relative
-        @include scrollbar(0px,$black,#fff,0px)
         @include media(540)
-            padding: 0 20px 20px
-            margin-top: 40px
+            padding: 0 20px 40px
         .icon
-            margin-bottom: 30px
+            display: block
             line-height: 0
+            position: absolute
+            top: 55px
+            left: 50%
+            transform: translateX(-50%)
+            width: 60px
+            height: auto
             img,svg
-                width: 80px
-                height: 80px
-        .nav-list
-            width: 100%
-            >li
-                &:not(:last-child)
-                    margin-bottom: 15px
-                &:hover
-                    h5, >a
-                        transform: translateX(5px)
+                width: 100%
+                height: 100%
+                path 
+                    fill: #000
+        .main_wrapper
+            max-height: 370px 
+            overflow-y: auto
+            padding-right: 5px
+            @include scrollbar()
+            .category_grid
+                display: grid
+                grid-template-columns: repeat(2, 1fr)
+                gap: 10px
+                .category_col
+                    display: flex
+                    align-items: center
+                    justify-content: space-between
+                    gap: 10px
+                    background: #f5f5f5
+                    padding: 0 14px
+                    &:hover
+                        p
+                            transform: translateX(5px)
+                            color: $black
+                    p
+                        color: $text
+                        font-size: 14px
+                        line-height: 1.2
                         transition: .5s ease
-                        @include media(540)
-                            transform: translateX(0px)
-                &.desktop-non
-                    display: none
-                &.hasDropdown
-                    position: relative
-                    cursor: pointer
-                    &:hover
-                        .title
-                            h5
-                                color: $primary
-                    .title
-                        display: flex
-                        justify-content: space-between
-                        align-items: center
-                        &.active
-                            h5
-                                color: var(--primary)
-                            svg
-                                transform: rotate(90deg)
-                        h5
-                            font-size: 22px
-                            color: #000
-                            font-weight: 500
-                            transition: .3s ease
-                        .arrow
-                            width: 30px
-                            transition: .5s ease
-                        svg
-                            transition: .5s ease
-                            width: 16px
-                    .dropdown-menu-ham
-                        display: none
-                        padding-top: 15px
-                        ul
-                            border-top: 1px solid #dadada
-                            border-bottom: 1px solid #dadada
-                            padding: 10px
-                            li
-                                a
-                                    display: block
-                                    font-size: 16px
-                                    color: #666
-                                    padding: 3px 0
-                                    transition: .5s ease
-                                    &:hover
-                                        color: $primary
-                >a
-                    display: block
-                    font-size: 22px
-                    color: #000
-                    transition: .3s ease
-                    @include font(500)
-                    &:hover
-                        color: $primary
+                    figure
+                        width: 64px
+                        height: 64px
+                        line-height: 0
+            .nav-items
+                margin-top: 20px
+                li
+                    &:not(:last-child)
+                        margin-bottom: 15px
+                    a
+                        display: block
+                        font-size: 18px
+                        color: $text
+                        transition: .5s ease
+                        &:hover
+                            transform: translateX(5px)
+                            color: $black
         .bottom-list
-            margin-top: 2rem
+            margin-top: 3rem
             padding-top: 1rem
-            display: flex
-            align-items: center
-            gap: 1rem
-            border-top: 1px solid #dadada
+            border-top: 1px solid #ccc
             .social-icons
-                a
-                    display: inline-flex
-                    vertical-align: middle
+                display: flex
+                align-items: center
+                gap: 10px
+                li
+                    flex: 0 1 auto
+                    width: 40px
+                    height: 40px
+                    border-radius: 50%
+                    display: flex
                     align-items: center
                     justify-content: center
-                    height: 40px
-                    width: 40px
-                    border-radius: 50%
-                    color: #000
-                    line-height: 0
-                    overflow: hidden
-                    &:not(:last-child)
-                        margin-right: 4px
-                    svg
-                        width: 20px
-                        height: 20px
-                        path
-                            transition: none
-                            &[stroke],&[fill="none"]
-                                stroke: currentColor
-                            &[fill]
-                                fill: currentColor
+                    cursor: pointer
+                    transition: .5s ease
                     &:hover
-                        background-color: $primary
-                        color: $white
+                        background: $secondary
+                        a
+                            color: $white
+                    a
+                        display: inline-block
+                        color: #BEA16F
+                        width: 60%
+                        height: 60%
+                        svg, img
+                            width: 100%
+                            height: 100%
+
+.model.login-pop
+    top: 50%
+    left: 50%
+    max-width: 450px
+    height: fit-content
+    max-height: 90vh
+    border-radius: 220px 220px 0 0
+    transform: translate(-50%, 100vh)
+    transition: .8s ease
+    z-index: 10
+    &.is-open
+        transform: translate(-50%, -50%)
+    .close
+        top: 17px
+        right: 22px
+        z-index: 2
+        svg
+            width: 20px
+            path
+                stroke: $white !important
+                stroke-width: 2 !important
+    .model-body
+        padding: 150px 40px 40px
+        height: 100%
+        display: flex
+        flex-direction: column
+        position: relative
+        display: none
+        @include media(540)
+            padding: 0 20px 40px
+        &.active
+            display: block
+        .title
+            text-align: center
+            h4
+                font-weight: 400
+                font-size: 20px
+                letter-spacing: 20%
+                text-transform: uppercase
+        .icon
+            display: block
+            line-height: 0
+            position: absolute
+            top: 55px
+            left: 50%
+            transform: translateX(-50%)
+            width: 60px
+            height: auto
+            img,svg
+                width: 100%
+                height: 100%
+                path 
+                    fill: #000
+        .form
+            padding: 40px 0
+            .btn
+                margin-top: 40px
+                max-width: 100%
+        .split-sec
+            overflow: hidden
+            p
+                text-align: center
+                position: relative
+                width: fit-content
+                margin: 0 auto
+                color: $text
+                @include font(500)
+                &::before,&::after
+                    content: ''
+                    position: absolute
+                    top: 50%
+                    translate: 0 -50%
+                    width: 200px
+                    height: 1px
+                    background: #ECECEC
+                &::before
+                    left: calc(100% + 12px)
+                &::after
+                    right: calc(100% + 12px)
+        .btm-social-wrp
+            display: flex
+            justify-content: center
+            align-items: center
+            gap: 25px
+            margin: 40px 0 0
+            > *
+                flex: 1
+                max-width: 100%
+            .btn
+                border-radius: 5px
+            svg
+                width: 20px
+                height: 20px
+        // Otp Form
+        .back-to-login
+            display: flex
+            align-items: center
+            gap: 6px
+            color: $secondary
+        .otp-verify-wrap
+            padding-top: 30px
+            .message
+                font-weight: 400 
+                font-size: 16px
+                color: $text
+                text-align: center
+                span
+                    font-weight: 500 
+                    display: block
+                    font-size: 16px
+                    margin-top: 3px                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+            .otp_wrap
+                position: relative
+                .otpInput
+                    padding: 50px 0 60px
+                    max-width: 230px
+                    margin: 0 auto
+                    @include flex
+                    gap: 10px
+                    input
+                        flex: 1
+                        height: 40px
+                        width: 100%
+                        border: none
+                        @include font(500)
+                        border: 1px solid #D9D9D9
+                        border-radius: 5px  
+                        text-align: center
+                        &:focus
+                            outline: none
+                .otp-error
+                    color: red
+                    position: absolute
+                    font-size: 14px
+                    bottom: 20px
+                    left: 0
+                    right: 0
+                    text-align: center
+            .btn 
+                margin: 0 auto
+                --padding: 30px
+                --height: 38px
+            .register
+                text-align: center
+                color: $text
+                @include font(400)
+                margin-top: 46px
+                .reg-btn
+                    color: $secondary
+                    margin-left: 5px
+
 
 .enquire-pop
     right: 0

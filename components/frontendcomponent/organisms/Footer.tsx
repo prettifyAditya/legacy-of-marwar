@@ -7,6 +7,8 @@ import Overlay from "./Overlay";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
 import SearchPop from "./SearchPop";
+import Hamburger from "./Hamburger";
+import LoginPop from "./LoginPop";
 
 interface InfoItem {
   icon: string;
@@ -310,7 +312,9 @@ export default function Footer() {
         </div>
       </footer>
       <Overlay />
+      <Hamburger />
       <SearchPop />
+      <LoginPop />
     </>
   );
 }
