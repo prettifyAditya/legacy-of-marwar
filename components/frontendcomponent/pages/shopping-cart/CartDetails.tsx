@@ -5,10 +5,56 @@ import { useState } from "react";
 import type { SyntheticEvent, SubmitEvent } from "react";
 import Input from "../../atoms/Input";
 import Button from "../../atoms/Button";
+import CheckoutBottom from "../../molecules/CheckoutBottom";
+import CheckoutTotalList from "../../molecules/CheckoutTotalList";
+import type { CheckoutPricing } from "@/app/types/CheckoutPricing";
 
 interface Coupon {
   coupon: string;
 }
+
+const CheckoutListData = [
+  { id: "mrp", label: "Total MRP", amount: 4898, type: "add" },
+  { id: "discount", label: "Discount on MRP", amount: 3748, type: "subtract" },
+  { id: "coupon", label: "Coupon Discount", amount: 0, type: "subtract" },
+  {
+    id: "shipping",
+    label: "Shipping Fee",
+    amount: 0,
+    type: "add",
+    freeLabel: "Free",
+  },
+];
+
+const BankListData = [
+  {
+    imgSrc: "/images/checkout/payment1.png",
+  },
+  {
+    imgSrc: "/images/checkout/payment2.png",
+  },
+  {
+    imgSrc: "/images/checkout/payment3.png",
+  },
+  {
+    imgSrc: "/images/checkout/payment4.png",
+  },
+  {
+    imgSrc: "/images/checkout/payment5.png",
+  },
+  {
+    imgSrc: "/images/checkout/payment6.png",
+  },
+  {
+    imgSrc: "/images/checkout/payment7.png",
+  },
+  {
+    imgSrc: "/images/checkout/payment8.png",
+  },
+  {
+    imgSrc: "/images/checkout/payment9.png",
+  },
+];
 
 export default function CartDetails() {
   const [formData, setFormData] = useState<Coupon>({
@@ -47,7 +93,7 @@ export default function CartDetails() {
   };
   return (
     <section>
-      <div className="checkout-cart sec-pad-all">
+      <div className="checkout-main sec-pad-all">
         <div className="container">
           <div className="main_wrapper flex">
             <div className="colA">
@@ -57,6 +103,98 @@ export default function CartDetails() {
                 </p>
               </div>
               <div className="cart_list">
+                <div className="cart_col">
+                  <figure>
+                    <Image
+                      src="/images/other/cart-product.jpg"
+                      width={120}
+                      height={120}
+                      alt="product-img"
+                    ></Image>
+                  </figure>
+                  <figcaption>
+                    <h6>Prism Hoops Silver</h6>
+                    <div className="options_wrap">
+                      <div className="color_col">
+                        <p>
+                          Color : <span>Silver</span>
+                        </p>
+                      </div>
+                      <div className="quantity_wrap">
+                        <button
+                          type="button"
+                          onClick={decrement}
+                          disabled={quantity <= MIN_QTY}
+                          aria-label="Decrease quantity"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width={24}
+                            height={24}
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              fill="none"
+                              stroke="currentColor"
+                              strokeLinecap="round"
+                              strokeWidth={2}
+                              d="M20 12H4"
+                            ></path>
+                          </svg>
+                        </button>
+                        <input
+                          type="text"
+                          inputMode="numeric"
+                          value={isNaN(quantity) ? "" : quantity}
+                          onChange={handleQtyChange}
+                          onBlur={handleQtyBlur}
+                          aria-label="Quantity"
+                        />
+                        <button
+                          type="button"
+                          onClick={increment}
+                          disabled={quantity >= MAX_QTY}
+                          aria-label="Increase quantity"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width={24}
+                            height={24}
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              fill="none"
+                              stroke="currentColor"
+                              strokeLinecap="round"
+                              strokeWidth={2}
+                              d="M12 20v-8m0 0V4m0 8h8m-8 0H4"
+                            ></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                    <div className="lower-wrap">
+                      <div className="price_wrap">
+                        <p className="sp">₹1299</p>
+                        <p className="mrp">₹1499</p>
+                      </div>
+                      <button type="button" className="wishlistBtn">
+                        Move to wishlist
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width={20}
+                          height={20}
+                          viewBox="0 0 1024 1024"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M160 256H96a32 32 0 0 1 0-64h256V96a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32v96h256a32 32 0 1 1 0 64h-64v672a32 32 0 0 1-32 32H192a32 32 0 0 1-32-32zm448-64v-64H416v64zM224 896h576V256H224zm192-128a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32m192 0a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32"
+                          ></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </figcaption>
+                </div>
                 <div className="cart_col">
                   <figure>
                     <Image
@@ -171,42 +309,13 @@ export default function CartDetails() {
                   <p></p>
                 </div>
               </div>
-              <div className="checkout-list-wrap">
-                <ul className="checkout-list">
-                  <li>
-                    <p>Total MRP </p>
-                    <span>₹4,898</span>
-                  </li>
-                  <li>
-                    <p>Discount on MRP </p>
-                    <span className="green-color"> -₹3,748</span>
-                  </li>
-                  <li>
-                    <p>Coupon Discount </p>
-                    <span> ₹0.00</span>
-                  </li>
-                  <li>
-                    <p>Shipping Fee </p>
-                    <span className="green-color"> Free</span>
-                  </li>
-                </ul>
-                <div className="total_amount">
-                  <p>Total Amount </p>
-                  <p> ₹1,170</p>
-                </div>
-                <Button
-                  classname="solid-primary"
-                  buttonText="Place Order"
-                ></Button>
-              </div>
+              <CheckoutTotalList
+                items={CheckoutListData as CheckoutPricing[]}
+                onPlaceOrder={() => console.log("order placed")}
+              />
             </div>
           </div>
-          <div className="bottom-wrapper">
-            <ul className="bank-list">
-              <li></li>
-            </ul>
-            <Link href="">Need Help? Contact Us</Link>
-          </div>
+          <CheckoutBottom data={BankListData} />
         </div>
       </div>
     </section>

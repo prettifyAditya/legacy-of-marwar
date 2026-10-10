@@ -57,14 +57,14 @@ section
                         .icon
                             background: linear-gradient(#BEA16F, #9A7D48)
 
-.checkout-cart
+.checkout-main
     .container
         --container: 1000px
     .main_wrapper
         display: flex
         flex-wrap: wrap
         align-items: start
-        gap: 30px
+        gap: 20px
         .colA
             flex: 1
             width: 100%
@@ -76,6 +76,20 @@ section
                     font-weight: 400
                     font-size: 20px
                     color: $black
+            .top-nav
+                display: flex
+                align-items: center
+                justify-content: space-between
+                gap: 50px
+                margin-bottom: 25px
+                h6
+                    font-family: $sweetSans
+                    font-size: 20px
+                .btn
+                    font-size: 12px
+                    --height: 32px
+                    --padding: 12px
+                    border-radius: 5px
             .cart_list
                 .cart_col
                     border: 1px solid #F1F1F1
@@ -85,6 +99,8 @@ section
                     flex-wrap: wrap
                     align-items: start
                     gap: 30px
+                    &:not(:last-child)
+                        margin-bottom: 20px
                     figure
                         line-height: 0
                         flex: 0 1 120px
@@ -101,16 +117,219 @@ section
                         .options_wrap
                             display: flex
                             gap: 12px
+                            --height: 34px
                             .color_col
-                                flex: 1
+                                flex: 0 1 auto
                                 background: #F1F1F1
                                 border-radius: 5px
                                 padding: 6px 10px
-                                height: 100%
+                                height: var(--height)
                                 p
                                     white-space: nowrap
                                     font-size: 14px
                                     color: $black 
+                            .quantity_wrap
+                                flex: 1
+                                max-width: 130px
+                                height: var(--height)
+                                display: flex
+                                align-items: center
+                                background: #F1F1F1
+                                border-radius: 5px
+                                padding: 6px 10px
+                                button
+                                    line-height: 1
+                                    flex: 0 1 auto
+                                    width: 18px
+                                    height: 18px
+                                    display: flex
+                                    align-items: center
+                                    justify-content: center
+                                    svg
+                                        width: 100%
+                                        height: 100%
+                                input
+                                    text-align: center
+                                    background: none
+                                    border: none
+                                    outline: none
+                                    flex: 1
+                                    width: 100%
+                                    font-size: 18px
+                                    line-height: 1
+                        .lower-wrap
+                            display: flex
+                            align-items: center
+                            justify-content: space-between
+                            gap: 30px
+                            margin-top: 25px
+                            .price_wrap
+                                display: flex
+                                align-items: center
+                                gap: 10px
+                                p
+                                    font-weight: 400
+                                    font-size: 14px
+                                .sp
+                                    color: $black
+                                .mrp
+                                    text-decoration: line-through
+                            .wishlistBtn
+                                display: flex
+                                align-items: center
+                                gap: 10px
+                                color: $secondary
+                                font-size: 14px
+                                font-weight: 500
+                                transition: .5s ease
+                                &:hover
+                                    color: $red 
+            .address_wrapper
+                .address_col
+                    position: relative
+                    padding: 30px 15px 
+                    display: flex
+                    gap: 10px
+                    border: 1px solid #F3F3F3
+                    border-radius: 5px
+                    margin-bottom: 25px
+                    @include media(540) 
+                        padding: 15px 10px
+                        margin-bottom: 20px
+                    &:has(input:checked)
+                        .in-bx
+                            &::before
+                                opacity: 1
+                    &:not(:last-child)
+                        margin-bottom: 20px
+                    input
+                        position: absolute
+                        left: 0 
+                        top: 0
+                        width: 100%
+                        height: 100%
+                        z-index: 1
+                        opacity: 0
+                    .chk-box
+                        flex: 0 1 auto
+                        position: relative
+                        --circle: 18px
+                        .in-bx
+                            width: var(--circle)
+                            height: var(--circle)
+                            border: 1px solid $secondary
+                            border-radius: 50%
+                            position: relative
+                            &::before
+                                content: ""
+                                position: absolute
+                                left: 2px
+                                top: 2px
+                                width: calc( var(--circle) - 6px )
+                                height: calc( var(--circle) - 6px )
+                                background: $secondary 
+                                border-radius: 50%
+                                opacity: 0
+                                transition: .5s ease
+                    .content
+                        flex: 1
+                        .name
+                            font-family: $sweetSans
+                            font-size: 18px
+                            font-weight: 500
+                            line-height: 1
+                            padding-bottom: 10px
+                            @include media(540) 
+                                font-size: 18px
+                                padding-bottom: 6px
+                        .address
+                            font-size: 14px
+                            color: $text
+                            max-width: 80%
+                            line-height: 1.4
+                            @include media(540) 
+                                max-width: 100%
+                                font-size: 14px
+                                line-height: 1.2
+                        .contact
+                            display: flex
+                            align-items: center
+                            justify-content: space-between
+                            padding-top: 20px
+                            position: relative
+                            z-index: 1
+                            .mob
+                                vertical-align: middle
+                                color: $text
+                                font-size: 14px
+                                @include media(540) 
+                                    font-size: 12px
+                                a
+                                    color: $black
+                            .btn_wrap
+                                display: flex
+                                align-items: center
+                                gap: 20px
+                                @include media(540) 
+                                    gap: 10px
+                                .remove, .edit
+                                    color: $secondary
+                                    font-size: 14px
+                                    text-transform: uppercase
+                                    @include media(540) 
+                                        font-size: 12px
+                                        font-weight: 700
+            .payment_wrapper
+                display: flex
+                gap: 25px
+                .payment_col
+                    position: relative
+                    width: 220px
+                    padding: 25px 20px
+                    background: #F3F3F3
+                    border-radius: 5px
+                    --circle: 18px
+                    display: flex
+                    align-items: center
+                    gap: 13px
+                    &:has(input:checked)
+                        .in-bx
+                            &::before
+                                opacity: 1
+                        span
+                            color: $black
+                    input
+                        position: absolute
+                        left: 0 
+                        top: 0
+                        width: 100%
+                        height: 100%
+                        z-index: 1
+                        opacity: 0
+                    .in-bx
+                        flex: 0 1 auto
+                        width: var(--circle)
+                        height: var(--circle)
+                        border: 1px solid $secondary
+                        border-radius: 50%
+                        position: relative
+                        &::before
+                            content: ""
+                            position: absolute
+                            left: 2px
+                            top: 2px
+                            width: calc( var(--circle) - 6px )
+                            height: calc( var(--circle) - 6px )
+                            background: $secondary 
+                            border-radius: 50%
+                            opacity: 0
+                            transition: .5s ease
+                    span
+                        flex: 1
+                        display: block
+                        color: $text
+                        font-weight: 500
+                        transition: .5s ease
 
         .colB
             flex: 0 1 auto
@@ -136,8 +355,57 @@ section
                         --height: 36px
                         border-radius: 5px
                         flex: 0 1 auto
+            .product_wrapper
+                padding-bottom: 40px
+                border-bottom: 1px solid #D3D3D3
+                margin-bottom: 25px
+            .product_col
+                display: flex
+                align-items: start
+                gap: 20px
+                &:not(:last-child)
+                    margin-bottom: 25px
+                figure
+                    flex: 0 1 auto
+                    width: 100%
+                    max-width: 95px
+                    height: 85px
+                    border: 1px solid #00000014
+                    border-radius: 5px
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                    img
+                        width: 70%
+                        height: 70%
+                figcaption
+                    flex: 1
+                    padding-top: 10px
+                    h6
+                        font-family: $sweetSans
+                        font-weight: 500
+                        font-size: 14px
+                        color: $text
+                    .price_wrap
+                        display: flex
+                        align-items: center
+                        gap: 10px
+                        margin-top: 10px
+                        p
+                            font-weight: 400
+                            font-size: 14px
+                        .sp
+                            color: $black
+                        .mrp
+                            text-decoration: line-through
+            .total_products
+                font-size: 14px
+                font-weight: 500
+                color: $black
             .checkout-list-wrap
                 margin-top: 80px
+                &.shipping-total
+                    margin-top: 15px
                 .checkout-list
                     li
                         display: flex
@@ -161,3 +429,121 @@ section
                         font-weight: 500
                 .btn
                     max-width: 100%
+
+    .bottom-wrapper
+        display: flex
+        align-items: center
+        justify-content: space-between
+        gap: 40px
+        margin-top: 55px
+        .bank-list
+            display: flex
+            gap: 8px
+            li
+                display: inline-block
+                vertical-align: middle
+                line-height: 0
+                flex: 0 1 auto
+                img
+                    height: auto
+                    object-fit: cover
+        .need-help
+            &:hover
+                color: $secondary
+                transform: translateX(5px)
+
+
+.model.address-pop
+    height: fit-content
+    max-width: 500px
+    top: unset
+    bottom: 0%
+    left: 50%
+    transform: translate(-50%, 100%)
+    border-radius: 10px
+    transition: .5s ease
+    @include media(540) 
+        height: 100%
+    &.is-open
+        bottom: 50%
+        transform: translate(-50%, 50%)
+    .close
+        top: 20px
+        right: 20px
+        svg
+            width: 20px
+            height: 20px
+    .model-body
+        padding: 35px
+        background: $white
+        border-radius: 10px
+        .title
+            margin-bottom: 35px
+            h4
+                font-family: $sweetSans
+                font-weight: 500
+                font-size: 24px
+        .form-grid
+            --item: 2
+            --gaptb: 15px
+            --gaplr: 18px
+            &:not(:last-child)
+                margin-bottom: 35px
+        .form
+            --inputsize: 37px
+            --borderbefore: var(--text)
+            --borderafter: var(--secondary)
+            // height: 400px
+            // overflow-y: auto
+            @include media(540) 
+                height: 100%
+                overflow-y: visible
+            h6
+                font-size: 16px
+                margin-bottom: 15px
+                font-family: $sweetSans 
+                font-weight: 500
+        .disclaimer
+            margin-bottom: 30px
+            display: flex
+            align-items: center
+            gap: 7px
+            position: relative
+            .check-box
+                --box: 20px
+                height: 100%
+                .in-bx
+                    width: var(--box)
+                    height: var(--box)
+                    background: #D9D7D7
+                    border-radius: 3px
+                    position: relative
+                    z-index: 1
+                    &::before
+                        content: ""
+                        position: absolute
+                        width: 100%
+                        height: 100%
+                        background: url(/icon/tick-white.svg) no-repeat
+                        background-position: 50% 50%
+                        background-size: calc( var(--box) - 10px )
+                        filter: invert(1)
+                        z-index: 1
+                        opacity: 0
+                input
+                    position: absolute
+                    width: 100%
+                    height: 100%
+                    left: 0
+                    top: 0
+                    opacity: 0
+                    z-index: 1
+                    &:checked 
+                        ~ .in-bx
+                            &::before
+                                opacity: 1
+            p
+                font-size: 14px
+                color: $text 
+        .btn
+            max-width: 100%

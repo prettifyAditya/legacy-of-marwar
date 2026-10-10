@@ -5,15 +5,18 @@ import { usePathname } from "next/navigation";
 export default function CheckoutHeader() {
   const pathname = usePathname();
   let cartPage = pathname.startsWith("/shopping-cart");
-  let addressPage = pathname.startsWith("/shopping-address");
-  let paymentPage = pathname.startsWith("/shopping-payment");
+  let addressPage = pathname.startsWith("/shipping-address");
+  let paymentPage = pathname.startsWith("/shipping-payment");
   return (
     <section>
       <div className="checkout_header">
         <div className="container">
           <ul>
             <li>
-              <Link href="/" className={`${cartPage ? "active" : ""}`}>
+              <Link
+                href="/shopping-cart"
+                className={`${cartPage || addressPage || paymentPage ? "active" : ""}`}
+              >
                 <div className="icon">
                   <svg
                     width={10}
@@ -32,7 +35,10 @@ export default function CheckoutHeader() {
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link
+                href="/shipping-address"
+                className={`${addressPage || paymentPage ? "active" : ""}`}
+              >
                 <div className="icon">
                   <svg
                     width={10}
@@ -51,7 +57,10 @@ export default function CheckoutHeader() {
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link
+                href="/shipping-payment"
+                className={`${paymentPage ? "active" : ""}`}
+              >
                 <div className="icon">
                   <svg
                     width={10}

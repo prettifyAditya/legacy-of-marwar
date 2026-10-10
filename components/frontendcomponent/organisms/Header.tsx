@@ -11,7 +11,10 @@ export default function Header() {
   const pathname = usePathname();
   const ProductDetails = pathname.startsWith("/product-details");
   const shoppingCart = pathname.startsWith("/shopping-cart");
-  const headerFit = ProductDetails || shoppingCart;
+  const shippingAddress = pathname.startsWith("/shipping-address");
+  const shippingPayment = pathname.startsWith("/shipping-payment");
+  const headerFit =
+    ProductDetails || shoppingCart || shippingAddress || shippingPayment;
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   useEffect(() => {
     const handleScroll = (): void => {
