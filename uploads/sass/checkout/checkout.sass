@@ -101,19 +101,23 @@ section
                     gap: 30px
                     &:not(:last-child)
                         margin-bottom: 20px
-                    figure
+                    figure, .figure
+                        display: block
                         line-height: 0
                         flex: 0 1 120px
                         width: 100%
                         max-width: 120px
                     figcaption
                         flex: 1
-                        h6
+                        h6, .h6
+                            display: block
                             font-weight: 400
                             font-family: $sweetSans
                             font-size: 14px
                             color: $text
                             margin-bottom: 15px
+                            &:hover
+                                color: $secondary
                         .options_wrap
                             display: flex
                             gap: 12px

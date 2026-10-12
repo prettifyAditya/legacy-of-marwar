@@ -1,11 +1,11 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useModal } from "@/hooks/useModal";
+import { CheckoutPricing } from "@/app/types/CheckoutPricing";
 import Button from "../../atoms/Button";
 import CheckoutBottom from "../../molecules/CheckoutBottom";
-import { CheckoutPricing } from "@/app/types/CheckoutPricing";
 import CheckoutTotalList from "../../molecules/CheckoutTotalList";
-import { useModal } from "@/hooks/useModal";
 
 interface AddressItem {
   name: string;

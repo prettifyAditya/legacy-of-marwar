@@ -3,7 +3,7 @@
 .form
     --inputsize: 48px
     --labelbefore: var(--text)
-    --labelafter: var(--black)
+    --labelafter: var(--secondary)
     --borderbefore: var(--text)
     --borderafter: var(--secondary)
     --labelfontbefore: 16px
@@ -116,6 +116,7 @@
             color: var(--color)
             & ~ label
                 opacity: 1
+            
     &.file-input
         .form-control.valid
             ~ .file-name
@@ -196,6 +197,9 @@
     --arrow: 15px
     --arrowspace: 8px
     --paddingleftright: 0
+    &.valid
+        .current
+            color: $black
     &.has-icon
         --iconsize: 12px
         --iconurl: url(/icon/location-gradient.svg)
@@ -218,7 +222,7 @@
         right: var(--paddingleftright)
         bottom: 0
         width: var(--arrow)
-        background-image: url(/icon/arrow-down-white.svg)
+        background-image: url(/icon/arrow-down-black.svg)
         background-position: 0 50%
         background-repeat: no-repeat
         background-size: 100% auto
@@ -228,7 +232,7 @@
         overflow: hidden
         text-overflow: ellipsis
         line-height: var(--inputsize)
-        color: var(--labelbefore)
+        color: var(--text)
         font-size: var(--labelfontbefore)
         font-weight: var(--font)
         padding-right: calc(var(--arrow) + var(--arrowspace))
@@ -259,10 +263,10 @@
             white-space: break-spaces
             font-size: 14px
             &.selected
-                background: $primary
+                background: $secondary
                 color: $white
                 &:hover
-                    background: $primary
+                    background: $secondary
                     color: $white
             &:hover
                 background: #e2e2e2

@@ -16,7 +16,7 @@ interface SelectChangeEvent {
 
 interface SelectProps {
   classname?: string;
-  hasIcon: boolean;
+  hasIcon?: boolean;
   label: string;
   name: string;
   id: string;

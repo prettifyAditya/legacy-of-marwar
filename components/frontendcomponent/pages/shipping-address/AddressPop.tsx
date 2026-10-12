@@ -1,10 +1,41 @@
 "use client";
+import { useState } from "react";
+import type { SyntheticEvent, SubmitEvent } from "react";
 import { useModal } from "@/hooks/useModal";
 import { useAppSelector } from "@/store/hooks";
 import Input from "../../atoms/Input";
 import Button from "../../atoms/Button";
 
+interface AddressFormData {
+  name: string;
+  phone: string;
+  pincode: string;
+  address: string;
+  locality: string;
+  city: string;
+  state: string;
+}
+
 export default function AddressPop() {
+  const [formData, setFormData] = useState<AddressFormData>({
+    name: "",
+    phone: "",
+    pincode: "",
+    address: "",
+    locality: "",
+    city: "",
+    state: "",
+  });
+  const handleChange = (
+    e: SyntheticEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = e.currentTarget;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+  const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(formData);
+  };
   const { closeModal } = useModal();
   const { isModal } = useAppSelector((state) => state.modal);
   return (
@@ -39,8 +70,22 @@ export default function AddressPop() {
         <div className="form">
           <h6>Contact Details</h6>
           <div className="form-grid">
-            <Input placeholder="Name" type="text" name="name" id="name" />
-            <Input placeholder="Phone" type="text" name="phone" id="phone" />
+            <Input
+              placeholder="Name"
+              type="text"
+              name="name"
+              id="name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+            <Input
+              placeholder="Phone"
+              type="text"
+              name="phone"
+              id="phone"
+              value={formData.phone}
+              onChange={handleChange}
+            />
           </div>
           <h6>Address</h6>
           <div className="form-grid">
@@ -50,6 +95,8 @@ export default function AddressPop() {
               type="text"
               name="pincode"
               id="pincode"
+              value={formData.pincode}
+              onChange={handleChange}
             />
             <Input
               classname="full"
@@ -57,6 +104,8 @@ export default function AddressPop() {
               type="text"
               name="address"
               id="address"
+              value={formData.address}
+              onChange={handleChange}
             />
             <Input
               classname="full"
@@ -64,14 +113,25 @@ export default function AddressPop() {
               type="text"
               name="locality"
               id="locality"
+              value={formData.locality}
+              onChange={handleChange}
             />
             <Input
               placeholder="City/ District"
               type="text"
               name="city"
               id="city"
+              value={formData.city}
+              onChange={handleChange}
             />
-            <Input placeholder="State" type="text" name="state" id="state" />
+            <Input
+              placeholder="State"
+              type="text"
+              name="state"
+              id="state"
+              value={formData.state}
+              onChange={handleChange}
+            />
           </div>
           <div className="disclaimer">
             <div className="check-box">
