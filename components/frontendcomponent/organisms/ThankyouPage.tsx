@@ -10,8 +10,8 @@ export default function ThankyouPage({ title = "", desc = "" }: BannerProps) {
     <div className="banner thankyou">
       <div className="bg">
         <video
-          src="/video/hero1.mp4"
-          poster="/video/hero1-poster.jpg"
+          src="/video/hero-banner.mp4"
+          poster="/video/hero-poster.jpg"
           autoPlay
           loop
           muted
@@ -23,7 +23,7 @@ export default function ThankyouPage({ title = "", desc = "" }: BannerProps) {
               <h1>{title}</h1>
               <p>{desc}</p>
               <Button
-                classname="solid-secondary"
+                classname="solid-primary"
                 buttonText="Go to Home"
                 linkHref="/"
               ></Button>

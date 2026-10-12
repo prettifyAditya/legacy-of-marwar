@@ -8,7 +8,7 @@ import Button from "../atoms/Button";
 import "@/uploads/sass/component/component.css";
 
 interface ContactFormData {
-  companyName: string;
+  name: string;
   phone: string;
   email: string;
   message: string;
@@ -16,7 +16,7 @@ interface ContactFormData {
 
 export default function DetailForm() {
   const [formData, setFormData] = useState<ContactFormData>({
-    companyName: "",
+    name: "",
     phone: "",
     email: "",
     message: "",
@@ -44,10 +44,10 @@ export default function DetailForm() {
       <div className="form-grid">
         <Input
           type="text"
-          label="Company Name *"
-          name="companyName"
-          id="companyName"
-          value={formData.companyName}
+          label="Name *"
+          name="name"
+          id="name"
+          value={formData.name}
           onChange={handleChange}
           required
         />
@@ -79,7 +79,7 @@ export default function DetailForm() {
       </div>
       <div className="btn_wrap">
         <Button
-          classname="solid-secondary"
+          classname="solid-primary"
           buttonText="Enquire Now"
           type="submit"
         ></Button>
