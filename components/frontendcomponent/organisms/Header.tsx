@@ -9,19 +9,27 @@ import "@/uploads/sass/header/header.css";
 export default function Header() {
   const { openModal } = useModal();
   const pathname = usePathname();
+  const PrivacyPolicy = pathname.startsWith("/privacy-policy");
+  const TermsConditions = pathname.startsWith("/terms-and-conditions");
+  const ShippingDelivery = pathname.startsWith("/shipping-and-delivery");
+  const ReturnExchange = pathname.startsWith("/return-and-exchange");
   const ProductDetails = pathname.startsWith("/product-details");
-  const shoppingCart = pathname.startsWith("/shopping-cart");
-  const shippingAddress = pathname.startsWith("/shipping-address");
-  const shippingPayment = pathname.startsWith("/shipping-payment");
-  const profilePage = pathname.startsWith("/profile");
-  const orderPage = pathname.startsWith("/order");
+  const ShoppingCart = pathname.startsWith("/shopping-cart");
+  const ShippingAddress = pathname.startsWith("/shipping-address");
+  const ShippingPayment = pathname.startsWith("/shipping-payment");
+  const ProfilePage = pathname.startsWith("/profile");
+  const OrderPage = pathname.startsWith("/order");
   const headerFit =
     ProductDetails ||
-    shoppingCart ||
-    shippingAddress ||
-    shippingPayment ||
-    profilePage ||
-    orderPage;
+    ShoppingCart ||
+    ShippingAddress ||
+    ShippingPayment ||
+    ProfilePage ||
+    OrderPage ||
+    PrivacyPolicy ||
+    TermsConditions ||
+    ShippingDelivery ||
+    ReturnExchange;
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   useEffect(() => {
     const handleScroll = (): void => {

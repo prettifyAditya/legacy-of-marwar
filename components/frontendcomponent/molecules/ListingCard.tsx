@@ -35,6 +35,13 @@ export default function ListingCard({ data }: ListingCardProps) {
           height={210}
           alt={`${data.title}'s_img`}
         ></Image>
+        <Image
+          className="hoverImg"
+          src="/images/other/gallery2.png"
+          width={275}
+          height={261}
+          alt="img"
+        />
       </Link>
       <figcaption>
         <Link className="h6" href={data.linkHref}>
