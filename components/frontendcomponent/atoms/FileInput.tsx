@@ -54,7 +54,7 @@ export default function FileInput({
         onChange={handleChange}
       />
       <div className="file-name"></div>
-      <div className="file_type">Pdf, Docx (max size 2mb)</div>
+      <div className="file-type">Pdf, Docx (max size 2mb)</div>
       <div className="error">{error}</div>
     </div>
   );

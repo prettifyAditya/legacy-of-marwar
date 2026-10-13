@@ -510,7 +510,7 @@ img, video
             img
                 filter: unset
     &.solid-secondary 
-        color: $black
+        color: $white
         &::before
             bottom: 0
             border-radius: 0
@@ -547,6 +547,18 @@ img, video
             background: $btncolor
         path
             fill: $btncolor
+        &:hover
+            color: $white
+            path
+                fill: $white
+    &.secondary-border
+        background: transparent
+        border: 1px solid $secondary
+        color: $secondary
+        &::before
+            background: $secondary
+        path
+            fill: $secondary
         &:hover
             color: $white
             path
@@ -1348,3 +1360,23 @@ div
     color: $red !important
 .orange-color
     color: orange !important
+
+.sm-block
+    display: none
+    @include media(540)
+        display: block
+
+.md-block
+    display: none
+    @include media(768)
+        display: block
+
+.sm-none
+    display: block
+    @include media(540)
+        display: none
+
+.md-none
+    display: block
+    @include media(768)
+        display: none

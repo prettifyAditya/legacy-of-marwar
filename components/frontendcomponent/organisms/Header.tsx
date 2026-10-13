@@ -13,8 +13,15 @@ export default function Header() {
   const shoppingCart = pathname.startsWith("/shopping-cart");
   const shippingAddress = pathname.startsWith("/shipping-address");
   const shippingPayment = pathname.startsWith("/shipping-payment");
+  const profilePage = pathname.startsWith("/profile");
+  const orderPage = pathname.startsWith("/order");
   const headerFit =
-    ProductDetails || shoppingCart || shippingAddress || shippingPayment;
+    ProductDetails ||
+    shoppingCart ||
+    shippingAddress ||
+    shippingPayment ||
+    profilePage ||
+    orderPage;
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   useEffect(() => {
     const handleScroll = (): void => {
