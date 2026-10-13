@@ -12,6 +12,7 @@
     "@fancyapps/ui": "github:fancyapps/ui",
     "@gsap/react": "^2.1.2",
     "@reduxjs/toolkit": "^2.13.0",
+    "date-fns": "^4.4.0",
     "framer-motion": "^13.4.6",
     "gsap": "^3.15.0",
     "next": "16.3.7",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^19",
+    "@types/react-date-range": "^1.4.10",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.3.7",

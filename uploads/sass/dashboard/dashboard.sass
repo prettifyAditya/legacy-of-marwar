@@ -143,6 +143,7 @@
                 .aside-right-wrap
                     background: none
                     box-shadow: none
+                    padding: 0
                     .title
                         display: flex
                         align-items: center
@@ -155,16 +156,28 @@
                         .form-title
                             margin-bottom: 0
                         .filter_options
+                            flex: 1
                             display: flex
                             align-items: center
+                            justify-content: end
                             gap: 10px
                             @include media(540)
                                 flex-direction: column
                                 width: 100%
-                            .css-b62m3t-container
-                                @include media(540)
-                                    width: 100% !important
+                            .form
+                                --inputsize: 36px
+                                --gaplr: 15px
+                                --labelfontbefore: 14px
+                                gap: var(--gaplr)
+                                align-items: center
+                                flex-wrap: nowrap
+                                .status_list
+                                    flex: 0 1 110px
+                                    min-width: 110px
+                                    label
+                                        display: none
                             .date_select
+                                flex: 1
                                 @include media(540)
                                     display: block !important
                                     width: 100% !important
@@ -176,6 +189,7 @@
                                 @include media(540)
                                     left: 0 !important
                                 .rdrCalendarWrapper
+                                    border-radius: 0 0 10px 10px
                                     @include media(540)
                                         width: 100%
                                     .rdrMonths
@@ -192,13 +206,14 @@
                     .order_list
                         padding-top: 30px
                         .order_item
+                            box-shadow: 0 0 6px #959da533
                             background: #fff
                             border-radius: 10px
                             &:not(:last-child)
                                 margin-bottom: 20px
                             .order_id
                                 padding: 10px 20px
-                                background-color: #F1F1F1
+                                background-color: var(--primary)
                                 border-top-left-radius: 10px
                                 border-top-right-radius: 10px
                                 @include media(540)
@@ -209,7 +224,8 @@
                                     @include media(540)
                                         font-size: 12px
                                 .id
-                                    font-weight: 700
+                                    color: $black
+                                    font-weight: 500
                                     line-height: 1.2
                                     font-size: 16px
                                     @include media(540)
@@ -235,7 +251,7 @@
                                         @include media(1200)
                                             width: 100%
                                         .name, .price
-                                            font-weight: 700
+                                            font-weight: 400
                                             @include media(540)
                                                 font-size: 14px
                                     .btn_wrap
@@ -269,7 +285,7 @@
                                         &.total_price
                                             span
                                                 padding-left: 10px
-                                                font-weight: 700
+                                                font-weight: 500
                                                 color: $black
                                                 font-size: 16px
                                                 @include media(540)
@@ -1163,8 +1179,15 @@
                     margin-top: 37px
 
 .rdrDateDisplayItemActive
-    border-color: #000 !important
+    border-color: var(--secondary) !important
 
 .rdrSelected, .rdrInRange, .rdrStartEdge, .rdrEndEdge
-    background: #000 !important
+    background: var(--secondary) !important
     
+.rdrDayStartPreview, .rdrDayInPreview, .rdrDayEndPreview, .rdrDayHovered
+    color: var(--secondary) !important
+
+.rdrDayNumber
+    span
+        &::after
+            background: var(--secondary) !important
