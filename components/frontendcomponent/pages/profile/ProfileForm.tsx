@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { useModal } from "@/hooks/useModal";
 import type { SyntheticEvent, SubmitEvent } from "react";
 import Input from "../../atoms/Input";
 import Textarea from "../../atoms/Textarea";
@@ -17,6 +18,7 @@ interface FormData {
 }
 
 export default function ProfileForm() {
+  const { openModal } = useModal();
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
@@ -93,7 +95,11 @@ export default function ProfileForm() {
         <div className="delivery_add">
           <div className="title">
             <h6 className="form-title">Delivery Address</h6>
-            <button type="button" className="btn secondary-border">
+            <button
+              type="button"
+              className="btn secondary-border"
+              onClick={() => openModal("addressPop")}
+            >
               <span className="sm-none">Add New Address</span>
               <span className="sm-block">Add Address</span>
             </button>

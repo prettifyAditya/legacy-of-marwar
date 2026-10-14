@@ -1,6 +1,6 @@
 import DashboardNav from "../../organisms/DashboardNav";
-import "@/uploads/sass/dashboard/dashboard.css";
 import OrderList from "./OrderList";
+import "@/uploads/sass/dashboard/dashboard.css";
 
 export default function OrderPage() {
   return (

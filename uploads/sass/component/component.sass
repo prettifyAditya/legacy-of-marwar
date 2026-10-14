@@ -37,6 +37,11 @@
 	// padding: 40px 25px
 	box-shadow: 0 0 6px #959da533
 	&:hover
+		.wishlistBtn
+			svg 
+				&.close
+					path
+						stroke: white
 		figure, .figure
 			.hoverImg
 				transform: scale(1)
@@ -53,9 +58,17 @@
 		z-index: 2
 		&.active
 			svg 
-				path
-					fill-opacity: 1
-					fill: $secondary
+				&:not(.close)
+					path
+						fill-opacity: 1
+						fill: $secondary
+				&.close
+					path
+						stroke: white
+		.close
+			width: 35%
+			height: 35%
+			transition: .5s ease
 		svg, img
 			width: 40%
 			height: 40%

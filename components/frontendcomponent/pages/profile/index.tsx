@@ -1,4 +1,5 @@
 import DashboardNav from "../../organisms/DashboardNav";
+import AddressPop from "../shipping-address/AddressPop";
 import ProfileForm from "./ProfileForm";
 import "@/uploads/sass/dashboard/dashboard.css";
 
@@ -15,6 +16,7 @@ export default function ProfilePage() {
           </div>
         </div>
       </section>
+      <AddressPop />
     </main>
   );
 }

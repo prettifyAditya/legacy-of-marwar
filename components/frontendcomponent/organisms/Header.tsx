@@ -19,6 +19,7 @@ export default function Header() {
   const ShippingPayment = pathname.startsWith("/shipping-payment");
   const ProfilePage = pathname.startsWith("/profile");
   const OrderPage = pathname.startsWith("/order");
+  const WishlistPage = pathname.startsWith("/wishlist");
   const headerFit =
     ProductDetails ||
     ShoppingCart ||
@@ -29,7 +30,8 @@ export default function Header() {
     PrivacyPolicy ||
     TermsConditions ||
     ShippingDelivery ||
-    ReturnExchange;
+    ReturnExchange ||
+    WishlistPage;
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   useEffect(() => {
     const handleScroll = (): void => {
