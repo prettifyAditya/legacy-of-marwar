@@ -75,9 +75,8 @@ export default function OrderDetailPage() {
                           <p className="pro_name">
                             Women flexible bangle bracelet
                           </p>
-                          <p className="size">
-                            Size : <span>M:5</span>, <span>L:2</span>,{" "}
-                            <span>XL:5</span>
+                          <p className="color">
+                            Color : <span>Silver</span>
                           </p>
                         </div>
                         <div className="item_total">
@@ -108,9 +107,8 @@ export default function OrderDetailPage() {
                           <p className="pro_name">
                             Women flexible bangle bracelet
                           </p>
-                          <p className="size">
-                            Size : <span>M:5</span>, <span>L:2</span>,{" "}
-                            <span>XL:5</span>
+                          <p className="color">
+                            Color : <span>Silver</span>
                           </p>
                         </div>
                         <div className="item_total">
@@ -148,10 +146,6 @@ export default function OrderDetailPage() {
                           <li>
                             <p>Subtotal</p>
                             <span>₹37,695</span>
-                          </li>
-                          <li>
-                            <p>Embroidery</p>
-                            <span>₹5000.00</span>
                           </li>
                           <li>
                             <p>Shipping</p>

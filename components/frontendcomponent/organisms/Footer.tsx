@@ -77,7 +77,7 @@ const footerNavItems: FooterNav[] = [
       { title: "Privacy Policy", linkHref: "/privacy-policy" },
       { title: "Terms and Conditions", linkHref: "/terms-and-conditions" },
       { title: "Shipping & Delivery", linkHref: "/shipping-and-delivery" },
-      { title: "Returns & Exchanges", linkHref: "/returns-and-exchanges" },
+      { title: "Returns & Exchanges", linkHref: "/return-and-exchange" },
       { title: "Size Guide", linkHref: "/size-guide" },
     ],
   },
