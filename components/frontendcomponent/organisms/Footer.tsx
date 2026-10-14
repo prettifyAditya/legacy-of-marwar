@@ -282,33 +282,35 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="lower-footer container">
-          <div className="copywite">
-            <p>© Legacy of Marwar . All Right Reserved</p>
-            <p className="pret">
-              Made by
-              <Link
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://www.prettifycreative.com/"
-              >
-                <img
-                  src="/icon/prettify-light.svg"
-                  width={43}
-                  height={16}
-                  alt="prettify_logo"
-                />
-              </Link>
-            </p>
+        <div className="lower-footer">
+          <div className="container">
+            <div className="copywite">
+              <p>© Legacy of Marwar . All Right Reserved</p>
+              <p className="pret">
+                Made by
+                <Link
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.prettifycreative.com/"
+                >
+                  <img
+                    src="/icon/prettify-light.svg"
+                    width={43}
+                    height={16}
+                    alt="prettify_logo"
+                  />
+                </Link>
+              </p>
+            </div>
+            <figure className="payment">
+              <Image
+                src="/images/home/payment.png"
+                width={350}
+                height={45}
+                alt="payments"
+              ></Image>
+            </figure>
           </div>
-          <figure className="payment">
-            <Image
-              src="/images/home/payment.png"
-              width={350}
-              height={45}
-              alt="payments"
-            ></Image>
-          </figure>
         </div>
       </footer>
       <Overlay />

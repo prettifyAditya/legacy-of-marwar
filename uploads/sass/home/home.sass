@@ -50,6 +50,8 @@
                 transform: translateY(120%)
                 opacity: 0
                 transition: .5s ease
+                @include media(1440)
+                    max-width: 400px
                 &.active
                     opacity: 1
                     transform: translateY(25%)
@@ -98,6 +100,8 @@
         align-items: center
         --gap: 65px
         gap: var(--gap)
+        @include media(1440)
+            --gap: 50px
         .heading
             flex: 0 1 auto
             max-width: 310px
@@ -263,6 +267,8 @@
         .icon
             width: 50px
             margin-bottom: 100px
+            @include media(1440)
+                margin-bottom: 80px
         .heading
             max-width: 360px
             p
