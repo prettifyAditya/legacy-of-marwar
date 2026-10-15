@@ -72,14 +72,26 @@ export default function Exclusive() {
               }}
               breakpoints={{
                 0: {
-                  slidesPerView: 1,
+                  slidesPerView: 1.2,
+                  spaceBetween: 10,
+                },
+                540: {
+                  slidesPerView: 1.5,
                   spaceBetween: 10,
                 },
                 675: {
                   slidesPerView: 2,
                   spaceBetween: 10,
                 },
+                768: {
+                  slidesPerView: 1.5,
+                  spaceBetween: 10,
+                },
                 992: {
+                  slidesPerView: 2.3,
+                  spaceBetween: 0,
+                },
+                1280: {
                   slidesPerView: 2.5,
                   spaceBetween: 0,
                 },
