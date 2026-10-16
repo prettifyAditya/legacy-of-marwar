@@ -224,11 +224,15 @@ export default function ProductInfo() {
                     }}
                     breakpoints={{
                       0: {
-                        slidesPerView: 1,
+                        slidesPerView: 3,
                         spaceBetween: 10,
                       },
-                      675: {
-                        slidesPerView: 2,
+                      540: {
+                        slidesPerView: 3,
+                        spaceBetween: 10,
+                      },
+                      768: {
+                        slidesPerView: 4,
                         spaceBetween: 10,
                       },
                       992: {

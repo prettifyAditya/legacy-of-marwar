@@ -1,5 +1,7 @@
 "use client";
 import Image from "next/image";
+import { useModal } from "@/hooks/useModal";
+import { useAppSelector } from "@/store/hooks";
 import { useState, useRef, useEffect } from "react";
 import { Range, getTrackBackground } from "react-range";
 import ListingCard from "../../molecules/ListingCard";
@@ -120,19 +122,13 @@ const productItem = [
 ];
 
 export default function ListingWrapper() {
+  const { openModal, closeModal } = useModal();
+  const { isModal } = useAppSelector((state) => state.modal);
+  const isFilterOpen = isModal === "filterPop";
   const [price, setPrice] = useState<number[]>([MIN, MAX]);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
   const [activeDropdown, setActiveDropdown] = useState<DropdownId | null>(null);
   const filterRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleOutsideClick = (e: MouseEvent) => {
-      if (filterRef.current && !filterRef.current.contains(e.target as Node)) {
-        setActiveDropdown(null);
-      }
-    };
-    document.addEventListener("mousedown", handleOutsideClick);
-    return () => document.removeEventListener("mousedown", handleOutsideClick);
-  }, []);
 
   const handlePriceRange = (range: number[]) => {
     setPrice(range);
@@ -145,17 +141,57 @@ export default function ListingWrapper() {
     `adi-select-wrap ${extra} ${activeDropdown === id ? "active" : ""}`
       .replace(/\s+/g, " ")
       .trim();
+
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent) => {
+      if (filterRef.current && !filterRef.current.contains(e.target as Node)) {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
+  }, []);
+
+  useEffect(() => {
+    const checkViewport = () => {
+      setIsMobile(window.innerWidth < 991);
+    };
+    checkViewport();
+    window.addEventListener("resize", checkViewport);
+
+    return () => window.removeEventListener("resize", checkViewport);
+  }, []);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 990px)");
+
+    const handleChange = (e: MediaQueryList | MediaQueryListEvent) => {
+      setActiveDropdown(e.matches ? "category" : null);
+    };
+
+    handleChange(mq);
+    mq.addEventListener("change", handleChange);
+    return () => mq.removeEventListener("change", handleChange);
+  }, []);
   return (
     <section className="listing_wrapper">
-      <div className="list-filter-wrap">
+      <div
+        className="list-filter-wrap"
+        style={{ zIndex: isFilterOpen ? 11 : 7 }}
+      >
         <div className="container">
           <div className="list-filter" ref={filterRef}>
             <div className="colA">
-              <button type="button" className="filtr-btn">
+              <button
+                type="button"
+                className="filtr-btn"
+                onClick={() => openModal("filterPop")}
+              >
                 <img src="/icon/sort.svg" className="svg" alt="" />
               </button>
             </div>
-            <div className="colB">
+            <div
+              className={`colB ${isMobile ? "model" : ""} ${isFilterOpen ? "is-open" : ""}`}
+            >
               <div className="filter_wrap">
                 <div className={wrapClass("category")}>
                   <div
@@ -306,7 +342,43 @@ export default function ListingWrapper() {
                     </article>
                   </div>
                 </div>
+                {isMobile && (
+                  <div className="btn-mbl-btm">
+                    <button
+                      className="btn solid-primary"
+                      type="button"
+                      onClick={closeModal}
+                    >
+                      Apply
+                    </button>
+                    <button
+                      className="btn solid-black"
+                      type="button"
+                      onClick={closeModal}
+                    >
+                      Clear
+                    </button>
+                  </div>
+                )}
               </div>
+              {isMobile && (
+                <button type="button" className="close" onClick={closeModal}>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 26 26"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0.5 0.5L25.5 25.5M0.5 25.5L25.5 0.5"
+                      stroke="black"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>
+                  </svg>
+                </button>
+              )}
             </div>
             <div className="colC">
               <div className={wrapClass("sort", "sort_by slt-rgt")}>

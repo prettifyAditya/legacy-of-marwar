@@ -535,8 +535,10 @@ img, video
         color: $white
         background: $black
         border-color: $black
+        &::before
+            display: none
         &:hover
-            background: none
+            background: var(--lightprime)
             color: $black
     &.w-100
         width: 100%
@@ -1221,13 +1223,15 @@ img, video
 .breadcrumbs
     @include media(991)
         display: none
+    @include media(768)
+        display: block
     li
         display: inline-block
         vertical-align: middle
         a
             color: $text
             font-size: 14px
-            font-weight: 500
+            font-weight: 400
             @include media(520)
                 font-size: 12px
                 text-overflow: ellipsis
@@ -1237,13 +1241,13 @@ img, video
             position: relative
             padding-right: 20px
             @include media(520)
-                padding-right: 8px
+                padding-right: 10px
             &::before
                 content: '>'
                 position: absolute
-                left: 100%
+                left: 95%
                 top: 50%
-                translate: 0 -50%
+                transform:  translate(0, -44%)
                 font-size: 12px
                 font-family: monospace
                 color: $text

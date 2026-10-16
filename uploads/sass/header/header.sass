@@ -232,6 +232,8 @@ footer
     background: $black
     position: relative
     z-index: 0
+    @include media(540)
+        margin-bottom: var(--footerstrip)
     .footer-bg
         position: absolute
         inset: 0
@@ -300,6 +302,8 @@ footer
                 gap: 30px
             @include media(768)
                 gap: 40px
+            @include media(540)
+                gap: 30px
             .colA
                 flex: 0 1 480px
                 @include media(1280)
@@ -310,11 +314,15 @@ footer
                     flex: 0 1 350px
                 @include media(540)
                     flex: 0 1 100%
+                    padding-bottom: 25px
+                    border-bottom: 1px solid #ffffff7a
                 .logo
                     display: block
                     width: 155px
                     height: auto
                     margin-bottom: 30px
+                    @include media(540)
+                        margin: 0 auto 30px
                     svg, img
                         width: 100%
                         height: 100%
@@ -413,13 +421,19 @@ footer
                     @include media(768)
                         width: 100%
                     @include media(540)
+                        flex-wrap: wrap
                         gap: 20px
+                        width: 100%
                     .list
                         flex: 0 1 auto
                         @include media(768)
                             flex: 1
                         @include media(540)
-                            flex: 0 1 auto
+                            flex: 1
+                        &:last-child
+                            @include media(540)
+                                flex: 0 1 100%
+                                margin-top: 15px
                         h6
                             font-family: $sweetSans
                             font-weight: 400
@@ -439,10 +453,15 @@ footer
                                         color: $white
                 .btn_wrap
                     gap: 20px
+                    @include media(540)
+                        width: 100%
                     .btn
                         text-transform: capitalize
                         @include media(991) 
                             font-size: 14px
+                        @include media(540)
+                            flex: 1
+                            max-width: 100%
     .lower-footer
         padding: 20px 0 30px
         @include media(540)

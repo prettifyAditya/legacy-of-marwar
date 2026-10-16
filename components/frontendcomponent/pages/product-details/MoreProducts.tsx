@@ -126,7 +126,7 @@ export default function MoreProducts() {
                   slidesPerView: 3,
                   spaceBetween: 10,
                 },
-                992: {
+                1280: {
                   slidesPerView: 4,
                   spaceBetween: 15,
                 },
