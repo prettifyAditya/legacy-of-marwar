@@ -1,7 +1,7 @@
 import BlogDetailBanner from "./BlogDetailBanner";
-import "@/uploads/sass/blogs/blogs.css";
 import BlogOverview from "./BlogOverview";
 import MoreBlogs from "./MoreBlogs";
+import "@/uploads/sass/blogs/blogs.css";
 
 export default function BlogDetailsPage() {
   return (

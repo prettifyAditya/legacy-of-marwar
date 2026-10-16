@@ -95,6 +95,9 @@ header
                     flex-direction: column
                     align-items: center
                     justify-content: center
+                    @include media(540) 
+                        &:has(button:not(.search))
+                            display: none
                     button
                         color: $white
                         svg
@@ -972,17 +975,18 @@ footer
             &:not(:last-child)
                 border-right: 1px solid rgb(256 256 256 / 10%)
             a
-                display: flex
-                flex-direction: column
-                align-items: center
-                padding: 8px
-                gap: 3px
-                color: $white
-                font-size: 14px
-                height: var(--footerstrip)
-                svg
-                    width: 20px
-                    height: 20px
+                &:not(.btn)
+                    color: $secondary
+                    display: flex
+                    flex-direction: column
+                    align-items: center
+                    padding: 8px
+                    gap: 3px
+                    font-size: 14px
+                    height: var(--footerstrip)
+                    svg
+                        width: 20px
+                        height: 20px
 
 .thankyou.banner
     &::before

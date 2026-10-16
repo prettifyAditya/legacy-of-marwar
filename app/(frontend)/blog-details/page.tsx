@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import BlogDetailsPage from "@/components/frontendcomponent/pages/blog-details";
 export const metadata: Metadata = {
-  title: "Blog Details | SJ Group",
-  description: "SJ Group website",
+  title: "Blog Details | Legacy of Marwar",
+  description: "Legacy of Marwar | Pure & Timeless",
 };
+import BlogDetailsPage from "@/components/frontendcomponent/pages/blog-details";
 
 export default function BlogDetails() {
   return <BlogDetailsPage />;

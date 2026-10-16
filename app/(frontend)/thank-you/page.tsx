@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import ThankyouPage from "@/components/frontendcomponent/organisms/ThankyouPage";
 export const metadata: Metadata = {
-  title: "Thank You | SJ Group",
-  description: "SJ Group website",
+  title: "Thank You | Legacy of Marwar",
+  description: "Legacy of Marwar website",
 };
 
 export default function ThankYou() {

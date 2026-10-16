@@ -5,7 +5,8 @@ import "@/uploads/sass/component/component.css";
 
 interface HeroProps {
   classname?: string;
-  heading: string;
+  heading?: string;
+  isLogo?: boolean;
   subheading?: string;
   desc?: string;
   mediaSrc: string;
@@ -17,6 +18,7 @@ interface HeroProps {
 export default function HeroBanner({
   classname = "",
   heading = "",
+  isLogo = false,
   subheading = "",
   desc = "",
   mediaSrc = "",
@@ -45,7 +47,16 @@ export default function HeroBanner({
           <div className="container">
             <div className="heading">
               {subheading && <h6>{subheading}</h6>}
-              <h1>{heading}</h1>
+              {heading && <h1>{heading}</h1>}
+              {isLogo && (
+                <Image
+                  className="written-logo"
+                  src="/images/about/logo-written.png"
+                  width={540}
+                  height={70}
+                  alt="logo"
+                ></Image>
+              )}
               {desc && <p>{desc}</p>}
               {(onClick || linkHref) && (
                 <Button
