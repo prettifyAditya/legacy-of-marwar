@@ -5,6 +5,7 @@ import CorporateGifting from "./CorporateGifting";
 import FollowSocialMedia from "./FollowSocialMedia";
 import DiscoverCategory from "./DiscoverCategory";
 import "@/uploads/sass/home/home.css";
+import FeaturedProduct from "./FeaturedProduct";
 
 const discoverCollectionData = {
   classname: "discover_collection",
@@ -221,6 +222,33 @@ const specialOccasionsData = {
   ],
 };
 
+const featuredProductData = [
+  {
+    linkHref: "/images/home/nec",
+    imgSrc: "/images/home/necklace.png",
+    title: "Jharokha",
+    sp: "A silver window onto Marwar",
+  },
+  {
+    linkHref: "/product-listing/2",
+    imgSrc: "/images/home/necklace.png",
+    title: " Jharokha",
+    sp: "A silver window onto Marwar",
+  },
+  {
+    linkHref: "/product-listing/3",
+    imgSrc: "/images/home/necklace.png",
+    title: "Jharokha",
+    sp: "A silver window onto Marwar",
+  },
+  {
+    linkHref: "/product-listing/4",
+    imgSrc: "/images/home/necklace.png",
+    title: "Jharokha",
+    sp: "A silver window onto Marwar",
+  },
+];
+
 export default function HomePage() {
   return (
     <main>
@@ -228,19 +256,46 @@ export default function HomePage() {
         classname="home-hero-banner"
         subheading="Timeless Silver"
         heading="Modern Elegance"
-        // mediaSrc="/video/hero-banner.mp4"
-        mediaSrc={[
-          "/images/home/slide-2.jpg",
-          // "/images/home/slide-2.jpg",
-          // "/video/hero-poster.jpg",
-          // "/video/hero-poster.jpg",
-          // "/video/hero-poster.jpg",
-        ]}
-        posterSrc="/video/hero-poster.jpg"
+        mediaSrc="/video/hero-banner-1.mp4"
+        posterSrc="/video/hero-poster-1.png"
         linkHref="/product-listing"
       />
       <ProductListingSlider data={discoverCollectionData} />
-      <DiscoverCategory />
+      {/* <DiscoverCategory /> */}
+      {/* <HeroBanner
+        classname="home-hero-banner"
+        mediaSrc={[
+          {
+            image: "/images/home/slide-2.jpg",
+            title: "Modern Elegance",
+            href: "/"
+          },
+          {
+            image: "/video/hero-poster.jpg",
+            title: "Modern Elegance",
+            href: "/project"
+          },
+          {
+            image: "/images/home/slide-2.jpg",
+            title: "Modern Elegance",
+            href: "/"
+          },
+          {
+            image: "/video/hero-poster.jpg",
+            title: "Modern Elegance",
+            href: "/"
+          },
+          {
+            image: "/images/home/slide-2.jpg",
+            title: "Modern Elegance",
+            href: "/"
+          },
+        ]}
+        linkHref="/product-listing"
+      /> */}
+
+      <FeaturedProduct data={featuredProductData} />
+
       <Exclusive />
       <CorporateGifting />
       <ProductListingSlider data={specialOccasionsData} />

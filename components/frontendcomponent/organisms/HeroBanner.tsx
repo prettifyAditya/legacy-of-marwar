@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import type { MouseEventHandler } from "react";
+import { useState, type MouseEventHandler } from "react";
 import Button from "../atoms/Button";
 import "@/uploads/sass/component/component.css";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,7 +12,7 @@ interface HeroProps {
   isLogo?: boolean;
   subheading?: string;
   desc?: string;
-  mediaSrc: string | string[];
+  mediaSrc: string | { image: string, title?: string, href?: string }[];
   posterSrc?: string;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   linkHref?: string;
@@ -24,16 +24,19 @@ export default function HeroBanner({
   isLogo = false,
   subheading = "",
   desc = "",
-  mediaSrc = "" as string | string[],
+  mediaSrc = "" as string | { image: string, title: string, href: string }[],
   posterSrc = "",
   onClick,
   linkHref = "",
 }: HeroProps) {
   const resolvedSrc: string = Array.isArray(mediaSrc)
-    ? (mediaSrc[0] ?? "")
+    ? (mediaSrc[0].image ?? "")
     : mediaSrc;
 
-  return (
+  const [activeSlide, setActiveSlide] = useState(0)
+  const resolvedHref = Array.isArray(mediaSrc) ? (mediaSrc[activeSlide]?.href ?? linkHref) : linkHref
+
+  return (  
     <div className={`banner hero_banner ${classname}`}>
       <div className="bg">
         {resolvedSrc.includes("mp4") ? (
@@ -53,8 +56,8 @@ export default function HeroBanner({
               modules={[Autoplay]}
               spaceBetween={0}
               slidesPerView={1}
-              speed={800}
-              allowTouchMove= {false}
+              speed={1200}
+              allowTouchMove={false}
               autoplay={{
                 delay: 2500,
                 disableOnInteraction: false,
@@ -63,19 +66,49 @@ export default function HeroBanner({
               loop={true}
               className="banner-slider"
             >
-              {mediaSrc?.map((image, index) => {
+              {mediaSrc?.map(({ image }, index) => {
                 return (
                   <SwiperSlide key={index}>
-                    <Image
-                      src={image}
-                      alt="banner image"
-                      width={1920}
-                      height={1080}
-                    />
+                    <figure>
+                      <Image
+                        src={image}
+                        alt="banner image"
+                        width={1920}
+                        height={1080}
+                      />
+                     </figure>
                   </SwiperSlide>
                 );
               })}
             </Swiper>
+
+            <Swiper
+              modules={[Autoplay]}
+              direction="vertical"
+              spaceBetween={0}
+              slidesPerView={1}
+              speed={1200}
+              allowTouchMove={false}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: false,
+              }}
+              loop={true}
+              className="banner-content-slider"
+              onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
+            >
+              {mediaSrc?.map(({ title }, index) => {
+                return (
+                  <SwiperSlide key={index}>
+                    <figcaption>
+                      <h1>{title}</h1>
+                    </figcaption>
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+
           </>
         ) : (
           <Image
@@ -100,10 +133,10 @@ export default function HeroBanner({
                 ></Image>
               )}
               {desc && <p>{desc}</p>}
-              {(onClick || linkHref) && (
+              {(onClick || resolvedHref) && (
                 <Button
                   onClick={onClick}
-                  linkHref={linkHref}
+                  linkHref={resolvedHref}
                   classname="animation"
                   buttonText="Shop Now"
                   svgpath="/icon/logo-vector.svg"
