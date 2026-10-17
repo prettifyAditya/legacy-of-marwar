@@ -173,20 +173,20 @@ section
     &:has(.product-detail-container)
         margin-top: var(--headerheight)
     .product-detail-container
-        padding: 20px 0 80px
+        padding: 8px 0 80px
         @include media(1280)
-            padding: 20px 0 70px
+            padding: 8px 0 70px
         @include media(768)
-            padding: 20px 0 60px
+            padding: 8px 0 60px
         @include media(540)
             padding: 5px 0 50px
     .detail-product-wrap
         display: flex
         flex-wrap: wrap
         align-items: start
-        --gap: 100px
+        --gap: 80px
         gap: var(--gap)
-        margin-top: 30px
+        margin-top: 20px
         @include media(1330)
             --gap: 70px
         @include media(1280)
@@ -197,13 +197,16 @@ section
         @include media(540)
             margin-top: 18px
             --gap: 25px
-        .colA, .colB
-            flex: 1
-            max-width: 50%
-            width: 100% 
-            @include media(991)
-                max-width: 100%
+        // .colA, .colB
+        //     flex: 1
+        //     max-width: 50%
+        //     width: 100% 
+        //     @include media(991)
+        //         max-width: 100%
         .colA
+            flex: 0 1 auto
+            max-width: 40%
+            width: 100%
             .image_wrapper
                 position: relative
                 width: 100%
@@ -265,15 +268,15 @@ section
                             width: 30px
                             height: 30px
                     .gallery_col
-                        height: 140px
+                        height: 100px
                         background: $white
                         border-radius: 5px
                         border: 1px solid transparent
                         transition: .5s ease
                         line-height: 0
                         cursor: pointer
-                        @include media(1280)
-                            height: 100px
+                        // @include media(1280)
+                        //     height: 100px
                         @include media(991)
                             height: 120px
                         @include media(540)
@@ -285,9 +288,12 @@ section
                             border-radius: inherit
                             // object-fit: contain
         .colB
-           .product_info_wrap
+            flex: 1
+            width: 100%
+            max-width: 60%
+            .product_info_wrap
                 .pro_title
-                    font-size: 42px
+                    font-size: 42pxs
                     @include media(1280)
                         font-size: 38px
                     @include media(768)
@@ -316,14 +322,19 @@ section
                     font-weight: 300
                     color: #000000B2
                     font-size: 14px
-                .color_wrap
-                    margin: 30px 0
+                    margin-bottom: 30px
                     @include media(1280)
-                        margin: 25px 0
+                        margin-bottom: 25px
                     @include media(768)
-                        margin: 20px 0
+                        margin-bottom: 20px
                     @include media(540)
-                        margin: 15px 0 20px
+                        margin-bottom: 15px
+                .color_wrap
+                    margin: 0 0 30px
+                    @include media(1280)
+                        margin: 0 0 25px
+                    @include media(768)
+                        margin: 0 0 20px
                     h6
                         font-family: $sweetSans
                         font-weight: 500

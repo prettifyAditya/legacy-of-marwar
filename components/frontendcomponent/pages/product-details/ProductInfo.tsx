@@ -46,7 +46,7 @@ const BreadcrumpsData: Breadcrumps[] = [
 
 const GalleryData: GalleryItem[] = [
   {
-    imgSrc: "/images/other/gallery1.jpg",
+    imgSrc: "/images/other/discover1.jpg",
   },
   {
     imgSrc: "/images/other/gallery2.png",

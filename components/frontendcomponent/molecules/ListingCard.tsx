@@ -54,15 +54,15 @@ export default function ListingCard({ data }: ListingCardProps) {
       <Link className="figure" href={data.linkHref}>
         <Image
           src={data.imgSrc}
-          width={210}
-          height={210}
+          width={312}
+          height={390}
           alt={`${data.title}'s_img`}
         ></Image>
         <Image
           className="hoverImg"
           src="/images/other/gallery2.png"
-          width={275}
-          height={261}
+          width={312}
+          height={390}
           alt="img"
         />
       </Link>
@@ -70,6 +70,7 @@ export default function ListingCard({ data }: ListingCardProps) {
         <Link className="h6" href={data.linkHref}>
           {data.title}
         </Link>
+        {data.desc && <p className="desc">{data.desc}</p>}
         <div className="price">
           <p className="sp">{data.sp}</p>
           <p className="mrp">{data.mrp}</p>

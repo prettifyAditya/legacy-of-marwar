@@ -1,7 +1,10 @@
+"use client";
 import Image from "next/image";
 import type { MouseEventHandler } from "react";
 import Button from "../atoms/Button";
 import "@/uploads/sass/component/component.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 
 interface HeroProps {
   classname?: string;
@@ -9,7 +12,7 @@ interface HeroProps {
   isLogo?: boolean;
   subheading?: string;
   desc?: string;
-  mediaSrc: string;
+  mediaSrc: string | string[];
   posterSrc?: string;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   linkHref?: string;
@@ -21,17 +24,21 @@ export default function HeroBanner({
   isLogo = false,
   subheading = "",
   desc = "",
-  mediaSrc = "",
+  mediaSrc = "" as string | string[],
   posterSrc = "",
   onClick,
   linkHref = "",
 }: HeroProps) {
+  const resolvedSrc: string = Array.isArray(mediaSrc)
+    ? (mediaSrc[0] ?? "")
+    : mediaSrc;
+
   return (
     <div className={`banner hero_banner ${classname}`}>
       <div className="bg">
-        {mediaSrc.includes("mp4") ? (
+        {resolvedSrc.includes("mp4") ? (
           <video
-            src={mediaSrc}
+            src={resolvedSrc}
             poster={posterSrc}
             width={1280}
             height={700}
@@ -40,8 +47,43 @@ export default function HeroBanner({
             loop
             playsInline
           ></video>
+        ) : Array.isArray(mediaSrc) ? (
+          <>
+            <Swiper
+              modules={[Autoplay]}
+              spaceBetween={0}
+              slidesPerView={1}
+              speed={800}
+              allowTouchMove= {false}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: false,
+              }}
+              loop={true}
+              className="banner-slider"
+            >
+              {mediaSrc?.map((image, index) => {
+                return (
+                  <SwiperSlide key={index}>
+                    <Image
+                      src={image}
+                      alt="banner image"
+                      width={1920}
+                      height={1080}
+                    />
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          </>
         ) : (
-          <Image src={mediaSrc} width={1280} height={700} alt={heading}></Image>
+          <Image
+            src={resolvedSrc}
+            width={1280}
+            height={700}
+            alt={heading}
+          ></Image>
         )}
         <div className="banner-wrapper">
           <div className="container">
@@ -63,7 +105,7 @@ export default function HeroBanner({
                   onClick={onClick}
                   linkHref={linkHref}
                   classname="animation"
-                  buttonText="Shop the collection"
+                  buttonText="Shop Now"
                   svgpath="/icon/logo-vector.svg"
                 />
               )}

@@ -17,21 +17,27 @@ const discoverCollectionData = {
       productItem: [
         {
           linkHref: "/product-listing/1",
-          imgSrc: "/images/other/ring1.png",
-          title: "Women flexible bangle bracelet",
+          imgSrc: "/images/other/discover1.jpg",
+          title: "Matsya",
+          desc: "A garden set in the night.",
           sp: "INR 15000",
+          mrp: "INR 15000",
         },
         {
           linkHref: "/product-listing/2",
-          imgSrc: "/images/other/ring1.png",
-          title: "Women flexible bangle bracelet",
+          imgSrc: "/images/other/discover1.jpg",
+          title: "Matsya",
+          desc: "A regal green, guarded by horses / Where strength meets good fortune",
           sp: "INR 15000",
+          mrp: "INR 15000",
         },
         {
           linkHref: "/product-listing/3",
-          imgSrc: "/images/other/ring1.png",
-          title: "Women flexible bangle bracelet",
+          imgSrc: "/images/other/discover1.jpg",
+          title: "Matsya",
+          desc: "A garden set in the night.",
           sp: "INR 15000",
+          mrp: "INR 15000",
         },
         {
           linkHref: "/product-listing/4",
@@ -222,7 +228,14 @@ export default function HomePage() {
         classname="home-hero-banner"
         subheading="Timeless Silver"
         heading="Modern Elegance"
-        mediaSrc="/video/hero-banner.mp4"
+        // mediaSrc="/video/hero-banner.mp4"
+        mediaSrc={[
+          "/images/home/slide-2.jpg",
+          // "/images/home/slide-2.jpg",
+          // "/video/hero-poster.jpg",
+          // "/video/hero-poster.jpg",
+          // "/video/hero-poster.jpg",
+        ]}
         posterSrc="/video/hero-poster.jpg"
         linkHref="/product-listing"
       />

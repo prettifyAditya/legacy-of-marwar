@@ -66,7 +66,7 @@ export default function Header() {
               <Image
                 width={152}
                 height={110}
-                src="/images/logo.svg"
+                src={isScrolled ? "/images/logo-dark.svg" : "/images/logo.svg"}
                 alt="logo"
               />
             </Link>

@@ -9,7 +9,7 @@ header
     z-index: 8
     transition: .5s ease
     height: var(--headerheight)
-    @include after($black)
+    @include after($white)
     &::after
         bottom: auto
         height: 0%
@@ -100,6 +100,7 @@ header
                             display: none
                     button
                         color: $white
+                        transition: .5s ease
                         svg
                             @include media(540)
                                 width: 22px
@@ -162,6 +163,7 @@ header
                             color: var(--black)
                             font-size: 11px
                             pointer-events: none
+                            transition: .5s ease
 
 header
     &.header-fixed
@@ -170,6 +172,21 @@ header
         // box-shadow: 0px 2px 8px 0px #63636333
         &::after
             height: 100%
+        .header-container
+            .colA
+                .ham-btn
+                    span
+                        background: $black
+            .colC
+                .nav-items
+                    li 
+                        button
+                            color: $black
+                        &:has(.dot-noti) 
+                            span
+                                background: #9a7d48
+                                color: $white
+
     &.header-fit
         transition: .5s ease
         // box-shadow: 0px 2px 8px 0px #63636333
@@ -224,9 +241,9 @@ header
             aspect-ratio: 1.9
             border: 2px solid $white
 
-.footer-vector
-    line-height: 0
-    width: 100%
+// .footer-vector
+//     line-height: 0
+//     width: 100%
 
 footer
     background: $black
@@ -240,8 +257,8 @@ footer
         width: 100%
         height: 100%
         z-index: -1
-        opacity: .35
-        mix-blend-mode: luminosity
+        // opacity: .35
+        // mix-blend-mode: luminosity
     .info_strip
         padding: 20px 0
         background: #EFEAD6
@@ -502,7 +519,7 @@ footer
                             line-height: 0
                             width: 60px
             .payment
-                width: 345px
+                width: 290px
                 @include media(991) 
                     width: 250px
                 img

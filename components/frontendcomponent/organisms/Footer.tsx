@@ -138,9 +138,9 @@ export default function Footer() {
   };
   return (
     <>
-      <figure className="footer-vector">
+      {/* <figure className="footer-vector">
         <img src="/images/home/footer-vector.svg" alt="footer_vector"></img>
-      </figure>
+      </figure> */}
       <footer>
         <Image
           src="/images/home/footer-bg.jpg"

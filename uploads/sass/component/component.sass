@@ -2,7 +2,7 @@
 
 .banner.hero_banner
 	&::before
-		background: linear-gradient(0deg, #000000, #00000000), linear-gradient(180deg, #000000, #00000000)
+		// background: linear-gradient(0deg, #000000, #00000000), linear-gradient(180deg, #000000, #00000000)
 	.bg
 		height: calc(100vh - var(--headerfixed))
 		@include media(768)
@@ -82,7 +82,7 @@
 		align-items: center
 		justify-content: center
 		line-height: 0
-		height: 300px
+		height: 390px
 		// margin: 0 auto 40px
 		border-radius: 10px 10px 0 0
 		overflow: hidden
@@ -94,11 +94,11 @@
 		img
 			display: block
 			border-radius: inherit
-			&:not(.hoverImg)
-				width: 80%
-				height: auto
-				@include media(540)
-					width: 70%
+			// &:not(.hoverImg)
+			// 	width: 80%
+			// 	height: auto
+			// 	@include media(540)
+			// 		width: 70%
 		.hoverImg
 			position: absolute
 			inset: 0
@@ -114,18 +114,24 @@
 		h6, .h6
 			display: block
 			font-family: $sweetSans
+			font-size: 22px
+			line-height: 1.2
+			margin-bottom: 3px
+			color: $black !important
+			transition: .5s ease
+		.desc
 			font-size: 14px
 			line-height: 1.3
-			color: $text
-			transition: .5s ease
+			height: 37px
+			@include line-clamp($line: 2)
 		.price
 			display: flex
 			align-items: center
 			gap: 20px
 			margin-top: 5px
 			.sp
-				color: $black
-				font-weight: 500
+				color: $text
+				font-weight: 400
 			.mrp
 				color: #000000B2
 				font-weight: 300
